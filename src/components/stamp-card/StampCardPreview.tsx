@@ -54,7 +54,7 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
               <div className="w-20 h-20 bg-gray-200 rounded-lg mb-6 flex items-center justify-center text-[10px] text-gray-500">
                 YOUR LOGO HERE
               </div>
-              <h3 className="text-lg font-medium mb-4">{formValues.businessName || "(Business Name)"}</h3>
+              <h3 className="text-lg font-medium mb-4">{formValues.businessName || "Business Name"}</h3>
               {formValues.websiteUrl && (
                 <a href={formValues.websiteUrl} className="text-blue-600 flex items-center gap-1 mb-6" target="_blank" rel="noopener noreferrer">
                   <Globe className="w-4 h-4" />

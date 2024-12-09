@@ -20,7 +20,7 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
       joinStamps: 0,
       cardDescription: "",
       websiteUrl: "",
-      businessName: "Zainab Foods",
+      businessName: "",
       offerDetails: "",
     },
   });
