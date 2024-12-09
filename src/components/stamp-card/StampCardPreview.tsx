@@ -63,7 +63,7 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
               )}
               <div className="w-full">
                 <h4 className="font-medium mb-2">More Details</h4>
-                <p className="text-sm text-gray-600">{formValues.offerDetails || "(Offer Details)"}</p>
+                <p className="text-sm text-gray-600">{formValues.offerDetails || "Offer Details"}</p>
               </div>
             </div>
           </div>
