@@ -32,7 +32,7 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
               <div className="w-20 h-20 bg-gray-200 rounded-lg mb-6 flex items-center justify-center text-[10px] text-gray-500">
                 YOUR LOGO HERE
               </div>
-              <p className="text-center text-xs font-medium mb-6 w-full px-4 break-words">{formValues.cardDescription || "Card Description"}</p>
+              <p className="text-center text-xs font-medium mb-6 w-full px-2 break-words whitespace-pre-wrap overflow-hidden">{formValues.cardDescription || "Card Description"}</p>
               <div className="grid grid-cols-3 gap-3 w-full">
                 {[...Array(numberOfStamps)].map((_, i) => (
                   <div key={i} className="aspect-square rounded-full border-2 border-gray-200" />
@@ -66,7 +66,7 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
               )}
               <div className="w-full">
                 <h4 className="font-medium mb-2">More Details</h4>
-                <p className="text-sm text-gray-600 break-words">{formValues.offerDetails || "Offer Details"}</p>
+                <p className="text-sm text-gray-600 break-words whitespace-pre-wrap overflow-hidden">{formValues.offerDetails || "Offer Details"}</p>
               </div>
             </div>
           </div>
