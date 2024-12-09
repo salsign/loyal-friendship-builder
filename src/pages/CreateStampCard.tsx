@@ -4,8 +4,20 @@ import { Link } from "react-router-dom";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { StampCardForm } from "@/components/stamp-card/StampCardForm";
 import { StampCardPreview } from "@/components/stamp-card/StampCardPreview";
+import { useState } from "react";
+import { StampCardFormValues } from "@/types/stamp-card";
 
 const CreateStampCard = () => {
+  const [formValues, setFormValues] = useState<StampCardFormValues>({
+    cardName: "",
+    stamps: 6,
+    joinStamps: 0,
+    cardDescription: "",
+    websiteUrl: "",
+    businessName: "Zainab Foods",
+    offerDetails: "",
+  });
+
   return (
     <div className="min-h-screen bg-[#F6F6F7] py-8">
       <div className="container max-w-6xl space-y-8">
@@ -38,10 +50,10 @@ const CreateStampCard = () => {
 
         <div className="flex gap-8">
           <div className="flex-1 space-y-6">
-            <StampCardForm />
+            <StampCardForm onFormChange={setFormValues} />
           </div>
           <div className="w-[400px]">
-            <StampCardPreview />
+            <StampCardPreview formValues={formValues} />
           </div>
         </div>
       </div>

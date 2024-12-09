@@ -6,8 +6,13 @@ import { Button } from "@/components/ui/button";
 import { StampCardFormValues } from "@/types/stamp-card";
 import { StampIconSelector } from "./StampIconSelector";
 import { AdvancedSettings } from "./AdvancedSettings";
+import { useEffect } from "react";
 
-export const StampCardForm = () => {
+interface StampCardFormProps {
+  onFormChange: (values: StampCardFormValues) => void;
+}
+
+export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
   const form = useForm<StampCardFormValues>({
     defaultValues: {
       cardName: "",
@@ -19,6 +24,13 @@ export const StampCardForm = () => {
       offerDetails: "",
     },
   });
+
+  useEffect(() => {
+    const subscription = form.watch((value) => {
+      onFormChange(value as StampCardFormValues);
+    });
+    return () => subscription.unsubscribe();
+  }, [form.watch, onFormChange]);
 
   const onSubmit = (data: StampCardFormValues) => {
     console.log("Form submitted:", data);
