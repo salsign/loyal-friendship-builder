@@ -25,10 +25,10 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
       </div>
 
       <div className="relative">
-        <div className={`aspect-[9/16] w-[280px] mx-auto bg-white rounded-3xl border-8 border-black relative overflow-hidden transition-all duration-500 transform-gpu ${isFlipped ? "rotate-y-180" : ""}`} style={{ perspective: "1000px", transformStyle: "preserve-3d" }}>
+        <div className={`aspect-[9/16] w-[240px] mx-auto bg-white rounded-3xl border-8 border-black relative overflow-hidden transition-all duration-500 transform-gpu ${isFlipped ? "rotate-y-180" : ""}`} style={{ perspective: "1000px", transformStyle: "preserve-3d" }}>
           {/* Front of the card */}
           <div className={`absolute inset-0 backface-hidden transition-all duration-500 ${isFlipped ? "opacity-0" : "opacity-100"}`}>
-            <div className="flex flex-col items-center pt-12 px-6">
+            <div className="flex flex-col items-center pt-12 px-6 h-full">
               <div className="w-20 h-20 bg-gray-200 rounded-lg mb-6 flex items-center justify-center text-[10px] text-gray-500">
                 YOUR LOGO HERE
               </div>
@@ -38,7 +38,7 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
                   <div key={i} className="aspect-square rounded-full border-2 border-gray-200" />
                 ))}
               </div>
-              <div className="mt-auto mb-6 w-full pointer-events-none select-none">
+              <div className="mt-auto mb-3 w-full pointer-events-none select-none">
                 <Button 
                   variant="destructive" 
                   className="w-full bg-[#ea384c] hover:bg-[#ea384c] cursor-default"
