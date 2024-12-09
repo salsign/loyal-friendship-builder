@@ -27,10 +27,14 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
 
   useEffect(() => {
     const subscription = form.watch((value) => {
+      // Ensure stamps value doesn't exceed 12
+      if (value.stamps && value.stamps > 12) {
+        form.setValue('stamps', 12);
+      }
       onFormChange(value as StampCardFormValues);
     });
     return () => subscription.unsubscribe();
-  }, [form.watch, onFormChange]);
+  }, [form.watch, onFormChange, form]);
 
   const onSubmit = (data: StampCardFormValues) => {
     console.log("Form submitted:", data);
@@ -63,7 +67,20 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
                 <FormItem>
                   <FormLabel>Stamps*</FormLabel>
                   <FormControl>
-                    <Input type="number" {...field} />
+                    <Input 
+                      type="number" 
+                      min="1"
+                      max="12"
+                      {...field}
+                      onChange={(e) => {
+                        const value = parseInt(e.target.value);
+                        if (value > 12) {
+                          field.onChange(12);
+                        } else {
+                          field.onChange(value);
+                        }
+                      }}
+                    />
                   </FormControl>
                 </FormItem>
               )}
