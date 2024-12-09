@@ -53,8 +53,18 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
               <FormItem>
                 <FormLabel>Card name*</FormLabel>
                 <FormControl>
-                  <Input placeholder="Coffee card" {...field} />
+                  <Input 
+                    placeholder="Coffee card" 
+                    maxLength={50}
+                    {...field} 
+                    onChange={(e) => {
+                      if (e.target.value.length <= 50) {
+                        field.onChange(e);
+                      }
+                    }}
+                  />
                 </FormControl>
+                <FormDescription>{field.value?.length || 0}/50 characters</FormDescription>
               </FormItem>
             )}
           />
@@ -107,9 +117,18 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
               <FormItem>
                 <FormLabel>Card description*</FormLabel>
                 <FormControl>
-                  <Input placeholder="E.G. BUY 8 COFFEES, GET ONE FREE!" {...field} />
+                  <Input 
+                    placeholder="E.G. BUY 8 COFFEES, GET ONE FREE!" 
+                    maxLength={50}
+                    {...field}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 50) {
+                        field.onChange(e);
+                      }
+                    }}
+                  />
                 </FormControl>
-                <FormDescription>0/50 characters</FormDescription>
+                <FormDescription>{field.value?.length || 0}/50 characters</FormDescription>
               </FormItem>
             )}
           />
@@ -156,10 +175,16 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
                   <Textarea 
                     placeholder="Include any information you would like to share with your customers, such as terms & conditions."
                     className="min-h-[100px]"
+                    maxLength={250}
                     {...field}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 250) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 </FormControl>
-                <FormDescription>0/250 characters</FormDescription>
+                <FormDescription>{field.value?.length || 0}/250 characters</FormDescription>
               </FormItem>
             )}
           />
