@@ -2,18 +2,10 @@ import { SidebarProvider, Sidebar, SidebarContent, SidebarGroup, SidebarHeader, 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Plus, Store } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
+import { Link } from "react-router-dom";
 
 const Index = () => {
-  const { toast } = useToast();
-  const hasStampCards = false; // This would come from your backend
-
-  const handleCreateCard = () => {
-    toast({
-      title: "Coming soon!",
-      description: "The create stamp card feature will be available soon.",
-    });
-  };
+  const hasStampCards = false;
 
   return (
     <SidebarProvider>
@@ -60,13 +52,14 @@ const Index = () => {
                   <p className="text-[#8E9196] text-lg mb-8 max-w-lg">
                     Start building customer loyalty by creating a digital stamp card for your business
                   </p>
-                  <Button 
-                    onClick={handleCreateCard}
-                    className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white px-6 py-6 h-auto text-lg font-medium shadow-md hover:shadow-lg transition-all duration-200"
-                  >
-                    <Plus className="h-5 w-5 mr-2" />
-                    Create Stamp Card
-                  </Button>
+                  <Link to="/create">
+                    <Button 
+                      className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white px-6 py-6 h-auto text-lg font-medium shadow-md hover:shadow-lg transition-all duration-200"
+                    >
+                      <Plus className="h-5 w-5 mr-2" />
+                      Create Stamp Card
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ) : (
