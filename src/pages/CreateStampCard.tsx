@@ -14,7 +14,7 @@ const CreateStampCard = () => {
     joinStamps: 0,
     cardDescription: "",
     websiteUrl: "",
-    businessName: "Zainab Foods",
+    businessName: "",
     offerDetails: "",
   });
 
