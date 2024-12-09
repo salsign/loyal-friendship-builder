@@ -10,6 +10,9 @@ interface StampCardPreviewProps {
 
 export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  
+  // Ensure stamps are within the valid range (1-12)
+  const numberOfStamps = Math.min(Math.max(1, formValues.stamps || 6), 12);
 
   return (
     <Card className="p-6 sticky top-8">
@@ -31,7 +34,7 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
               </div>
               <p className="text-center text-xs font-medium mb-6">{formValues.cardDescription || "Card Information"}</p>
               <div className="grid grid-cols-3 gap-3 w-full">
-                {[...Array(formValues.stamps || 6)].map((_, i) => (
+                {[...Array(numberOfStamps)].map((_, i) => (
                   <div key={i} className="aspect-square rounded-full border-2 border-gray-200" />
                 ))}
               </div>
