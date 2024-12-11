@@ -1,4 +1,4 @@
-import { Book, Home, MessageCircle, Star, Store, Users } from "lucide-react";
+import { LayoutDashboard, CreditCard, Users, MessageSquare, Star, BookOpen, HelpCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   Sidebar,
@@ -12,29 +12,39 @@ import {
 
 const menuItems = [
   {
-    icon: Store,
-    label: "Business",
+    icon: LayoutDashboard,
+    label: "Dashboard",
     path: "/",
   },
   {
-    icon: Users,
-    label: "Customers",
-    path: "/customers",
+    icon: CreditCard,
+    label: "Stamp Cards",
+    path: "/stamp-cards",
   },
   {
-    icon: MessageCircle,
-    label: "Marketing",
-    path: "/marketing",
+    icon: Users,
+    label: "Members",
+    path: "/members",
+  },
+  {
+    icon: MessageSquare,
+    label: "Communications",
+    path: "/communications",
   },
   {
     icon: Star,
-    label: "Rewards",
-    path: "/rewards",
+    label: "Campaigns",
+    path: "/campaigns",
   },
   {
-    icon: Book,
-    label: "Learn",
-    path: "/learn",
+    icon: BookOpen,
+    label: "Resources",
+    path: "/resources",
+  },
+  {
+    icon: HelpCircle,
+    label: "Help & Support",
+    path: "/help",
   },
 ];
 
