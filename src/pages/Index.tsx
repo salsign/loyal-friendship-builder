@@ -42,7 +42,7 @@ const Index = () => {
               Get started by creating your first stamp card!
             </h2>
             
-            <Link to="/create-stamp-card">
+            <Link to="/stamp-cards/create">
               <Button 
                 className="bg-[#FF4B55] hover:bg-[#FF4B55]/90 text-white px-8 py-6 text-lg h-auto"
               >

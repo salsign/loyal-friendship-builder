@@ -13,8 +13,8 @@ function App() {
           <AppSidebar />
           <main className="flex-1">
             <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/stamp-cards" element={<CreateStampCard />} />
+              <Route path="/stamp-cards" element={<Index />} />
+              <Route path="/stamp-cards/create" element={<CreateStampCard />} />
             </Routes>
           </main>
         </div>
