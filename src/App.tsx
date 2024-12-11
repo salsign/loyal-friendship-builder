@@ -14,7 +14,7 @@ function App() {
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/create-stamp-card" element={<CreateStampCard />} />
+              <Route path="/stamp-cards" element={<CreateStampCard />} />
             </Routes>
           </main>
         </div>
