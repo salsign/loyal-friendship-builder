@@ -27,6 +27,20 @@ const CreateStampCard = () => {
 
   const progress = ((currentStep + 1) / STEPS.length) * 100;
 
+  const handleNext = () => {
+    if (currentStep < STEPS.length - 1) {
+      console.log("Moving to next step:", currentStep + 1);
+      setCurrentStep(currentStep + 1);
+    }
+  };
+
+  const handleSaveAndExit = () => {
+    console.log("Saving and exiting...");
+    // Here you would typically save the form state
+    // For now, just redirect to home
+    window.location.href = "/";
+  };
+
   return (
     <div className="min-h-screen bg-[#F6F6F7] py-8">
       <div className="container max-w-6xl space-y-8">
@@ -65,6 +79,22 @@ const CreateStampCard = () => {
         <div className="flex gap-8">
           <div className="flex-1 space-y-6">
             <StampCardForm onFormChange={setFormValues} />
+            <div className="flex justify-between pt-6">
+              <Button
+                variant="outline"
+                onClick={handleSaveAndExit}
+                className="px-6"
+              >
+                Save & Exit
+              </Button>
+              <Button 
+                onClick={handleNext}
+                className="px-6"
+                disabled={currentStep === STEPS.length - 1}
+              >
+                Next
+              </Button>
+            </div>
           </div>
           <div className="w-[400px]">
             <StampCardPreview formValues={formValues} />
