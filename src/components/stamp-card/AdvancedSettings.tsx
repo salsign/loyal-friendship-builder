@@ -71,16 +71,18 @@ export const AdvancedSettings = ({
                 className="w-16"
                 placeholder="0"
               />
-              <Select defaultValue="seconds">
-                <SelectTrigger className="w-[120px]">
-                  <SelectValue placeholder="Select unit" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="seconds">seconds</SelectItem>
-                  <SelectItem value="minutes">minutes</SelectItem>
-                  <SelectItem value="hours">hours</SelectItem>
-                </SelectContent>
-              </Select>
+              <div>
+                <Select defaultValue="seconds">
+                  <SelectTrigger className="w-[120px]">
+                    <SelectValue placeholder="Select unit" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="seconds">seconds</SelectItem>
+                    <SelectItem value="minutes">minutes</SelectItem>
+                    <SelectItem value="hours">hours</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
           </div>
           <Switch className="data-[state=checked]:bg-[#4ade80] data-[state=checked]:border-[#4ade80]" />
