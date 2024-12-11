@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 export default function Campaigns() {
   return (
-    <div className="min-h-screen p-6 space-y-6 bg-white">
+    <div className="min-h-screen p-6 space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-medium text-gray-700">Campaigns</h1>
       </div>
@@ -11,7 +11,7 @@ export default function Campaigns() {
       <p className="text-gray-600">Create campaigns to engage your loyalty members.</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card className="bg-white border-rose-200">
+        <Card className="border-rose-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Cake className="h-5 w-5" />
@@ -26,7 +26,7 @@ export default function Campaigns() {
           </CardContent>
         </Card>
 
-        <Card className="bg-white">
+        <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Bell className="h-5 w-5" />
@@ -41,7 +41,7 @@ export default function Campaigns() {
           </CardContent>
         </Card>
 
-        <Card className="bg-white">
+        <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <MonitorPlay className="h-5 w-5" />
@@ -56,7 +56,7 @@ export default function Campaigns() {
           </CardContent>
         </Card>
 
-        <Card className="bg-white">
+        <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Mail className="h-5 w-5" />
