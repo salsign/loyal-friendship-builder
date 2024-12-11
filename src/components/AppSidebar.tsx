@@ -2,6 +2,7 @@ import { LayoutDashboard, CreditCard, Users, MessageSquare, Star, BookOpen, Help
 import { Link } from "react-router-dom";
 import {
   Sidebar,
+  SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
   SidebarMenu,
@@ -50,31 +51,34 @@ const menuItems = [
 export function AppSidebar() {
   return (
     <Sidebar variant="inset" className="bg-sidebar">
-      {/* Logo/Business Name Section */}
-      <div className="p-4 text-sidebar-foreground text-center">
-        <h2 className="text-lg font-bold mb-1">ZAINAB</h2>
-        <p className="text-xs">FOOD</p>
-      </div>
+      <SidebarContent>
+        {/* Logo/Business Name Section */}
+        <div className="p-4 text-sidebar-foreground text-center">
+          <h2 className="text-xl font-bold mb-1">ZAINAB</h2>
+          <p className="text-sm">FOOD</p>
+        </div>
 
-      {/* Menu Items */}
-      <SidebarGroup>
-        <SidebarGroupContent>
-          <SidebarMenu>
-            {menuItems.map((item) => (
-              <SidebarMenuItem key={item.label}>
-                <SidebarMenuButton
-                  className="text-sidebar-foreground hover:bg-sidebar-accent data-[active=true]:bg-sidebar-accent"
-                >
-                  <Link to={item.path} className="flex items-center gap-2">
-                    <item.icon className="w-5 h-5" />
-                    <span className="text-sm">{item.label}</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            ))}
-          </SidebarMenu>
-        </SidebarGroupContent>
-      </SidebarGroup>
+        {/* Menu Items */}
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {menuItems.map((item) => (
+                <SidebarMenuItem key={item.label}>
+                  <SidebarMenuButton
+                    asChild
+                    className="text-sidebar-foreground hover:bg-sidebar-accent data-[active=true]:bg-sidebar-accent"
+                  >
+                    <Link to={item.path}>
+                      <item.icon className="w-6 h-6" />
+                      <span>{item.label}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
     </Sidebar>
   );
 }
