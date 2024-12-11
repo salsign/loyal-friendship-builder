@@ -19,35 +19,28 @@ const members = [
 
 export default function Members() {
   return (
-    <div className="p-6 space-y-4 bg-[#F8F7FD]"> {/* Updated background color to match Stamp Card page */}
+    <div className="p-6 space-y-4 bg-white"> {/* Changed background color to white */}
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-medium text-gray-700">Members</h1> {/* Reduced from text-4xl */}
+        <h1 className="text-3xl font-medium text-gray-700">Members</h1>
       </div>
 
-      <div className="bg-blue-50 border border-blue-100 rounded-lg p-3 flex items-center gap-2"> {/* Reduced padding */}
-        <span className="bg-blue-100 p-1 rounded text-sm">👁️ DEMO VIEW</span> {/* Added text-sm */}
-        <span className="text-blue-600 text-sm">
-          Create & publish a Stamp Card first to unlock this area with your real data and functionality. Data shown is an example.
-        </span>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4"> {/* Changed to 4 columns and reduced gap */}
-        <Card className="p-4 flex items-center gap-3"> {/* Reduced padding and gap */}
-          <div className="bg-blue-100 p-2 rounded-lg"> {/* Reduced padding */}
-            <Users className="w-5 h-5 text-blue-600" /> {/* Reduced size */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <Card className="p-4 flex items-center gap-3">
+          <div className="bg-blue-100 p-2 rounded-lg">
+            <Users className="w-5 h-5 text-blue-600" />
           </div>
           <div>
-            <div className="text-xl font-semibold">10</div> {/* Reduced from text-2xl */}
+            <div className="text-xl font-semibold">10</div>
             <div className="text-gray-500 text-sm">Total members</div>
           </div>
         </Card>
 
         <Card className="p-4 flex items-center gap-3">
           <div className="bg-emerald-100 p-2 rounded-lg">
-            <Stamp className="w-5 h-5 text-emerald-600" /> {/* Changed to Stamp icon */}
+            <Stamp className="w-5 h-5 text-emerald-600" />
           </div>
           <div>
-            <div className="text-base">Give Stamps</div> {/* Reduced from text-xl */}
+            <div className="text-base">Give Stamps</div>
           </div>
         </Card>
 
@@ -70,12 +63,12 @@ export default function Members() {
         </Card>
       </div>
 
-      <Card className="p-4"> {/* Reduced padding */}
-        <div className="space-y-3"> {/* Reduced spacing */}
-          <div className="flex items-center gap-2 text-sm"> {/* Added text-sm */}
+      <Card className="p-4">
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 text-sm">
             <span className="text-gray-500">Showing members from</span>
             <Select defaultValue="all">
-              <SelectTrigger className="w-[180px]"> {/* Reduced width */}
+              <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="All Locations" />
               </SelectTrigger>
               <SelectContent>
