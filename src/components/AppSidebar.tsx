@@ -55,7 +55,84 @@ export function AppSidebar() {
         {/* Logo Section */}
         <div className="p-4 text-sidebar-foreground">
           <img 
-            src="/lovable-uploads/0687548f-40c1-4aff-8aa9-411a2f3c2132.png" 
+            src="/lovable-uploads/3542caa1-9989-474a-b70c-4962e4f3b450.png" 
+            alt="Members Logo" 
+            className="w-full h-auto max-w-[120px] mx-auto invert"
+          />
+        </div>
+
+        {/* Menu Items */}
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {menuItems.map((item) => (
+                <SidebarMenuItem key={item.label}>
+                  <SidebarMenuButton
+                    asChild
+                    className
+
+<lov-code>
+Let's update the AppSidebar component to use the new logo image:
+
+<lov-write file_path="src/components/AppSidebar.tsx">
+import { LayoutDashboard, CreditCard, Users, MessageSquare, Star, BookOpen, HelpCircle } from "lucide-react";
+import { Link } from "react-router-dom";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@/components/ui/sidebar";
+
+const menuItems = [
+  {
+    icon: LayoutDashboard,
+    label: "Dashboard",
+    path: "/",
+  },
+  {
+    icon: CreditCard,
+    label: "Stamp Cards",
+    path: "/stamp-cards",
+  },
+  {
+    icon: Users,
+    label: "Members",
+    path: "/members",
+  },
+  {
+    icon: MessageSquare,
+    label: "Communications",
+    path: "/communications",
+  },
+  {
+    icon: Star,
+    label: "Campaigns",
+    path: "/campaigns",
+  },
+  {
+    icon: BookOpen,
+    label: "Resources",
+    path: "/resources",
+  },
+  {
+    icon: HelpCircle,
+    label: "Help & Support",
+    path: "/help",
+  },
+];
+
+export function AppSidebar() {
+  return (
+    <Sidebar variant="inset" className="bg-sidebar">
+      <SidebarContent>
+        {/* Logo Section */}
+        <div className="p-4 text-sidebar-foreground">
+          <img 
+            src="/lovable-uploads/3542caa1-9989-474a-b70c-4962e4f3b450.png" 
             alt="Loyaze Logo" 
             className="w-full h-auto max-w-[180px] mx-auto"
           />
