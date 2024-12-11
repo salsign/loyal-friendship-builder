@@ -30,6 +30,11 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
   });
 
   const handleChange = (field: keyof StampCardFormValues, value: any) => {
+    // Limit cardName and cardDescription to 50 characters
+    if ((field === 'cardName' || field === 'cardDescription') && typeof value === 'string') {
+      value = value.slice(0, 50);
+    }
+    
     const newState = { ...formState, [field]: value };
     setFormState(newState);
     onFormChange(newState);
@@ -55,7 +60,11 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
               placeholder="Card Name"
               value={formState.cardName}
               onChange={(e) => handleChange("cardName", e.target.value)}
+              maxLength={50}
             />
+            <p className="text-sm text-gray-500 mt-1">
+              {formState.cardName.length}/50 characters
+            </p>
           </div>
           <div className="flex gap-4">
             <div className="flex-1">
@@ -114,7 +123,11 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
               placeholder="Card Description"
               value={formState.cardDescription}
               onChange={(e) => handleChange("cardDescription", e.target.value)}
+              maxLength={50}
             />
+            <p className="text-sm text-gray-500 mt-1">
+              {formState.cardDescription.length}/50 characters
+            </p>
           </div>
         </div>
       </div>
