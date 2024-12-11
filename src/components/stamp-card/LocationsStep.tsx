@@ -3,10 +3,21 @@ import { Plus } from "lucide-react";
 import { useState } from "react";
 import { AddLocationDialog } from "./AddLocationDialog";
 
+interface BusinessLogo {
+  type: 'emoji' | 'custom';
+  value: string;
+}
+
 export const LocationsStep = () => {
   console.log("Rendering LocationsStep component");
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedLogo, setSelectedLogo] = useState<BusinessLogo | null>(null);
   
+  const handleLogoSelect = (logo: BusinessLogo) => {
+    console.log("Logo selected:", logo);
+    setSelectedLogo(logo);
+  };
+
   return (
     <div className="space-y-6">
       <div className="space-y-4">
@@ -35,6 +46,7 @@ export const LocationsStep = () => {
       <AddLocationDialog 
         open={dialogOpen}
         onOpenChange={setDialogOpen}
+        onLogoSelect={handleLogoSelect}
       />
     </div>
   );

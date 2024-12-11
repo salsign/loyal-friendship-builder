@@ -13,9 +13,10 @@ import { useState } from "react";
 interface AddLocationDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onLogoSelect: (logo: { type: 'emoji' | 'custom', value: string }) => void;
 }
 
-export const AddLocationDialog = ({ open, onOpenChange }: AddLocationDialogProps) => {
+export const AddLocationDialog = ({ open, onOpenChange, onLogoSelect }: AddLocationDialogProps) => {
   console.log("Rendering AddLocationDialog component");
   const [selectedLogo, setSelectedLogo] = useState<string>('diamond');
   const [customLogo, setCustomLogo] = useState<string | null>(null);
@@ -44,8 +45,17 @@ export const AddLocationDialog = ({ open, onOpenChange }: AddLocationDialogProps
         const imageUrl = e.target?.result as string;
         setCustomLogo(imageUrl);
         setSelectedLogo('custom');
+        onLogoSelect({ type: 'custom', value: imageUrl });
       };
       reader.readAsDataURL(file);
+    }
+  };
+
+  const handleLogoSelect = (logoId: string) => {
+    setSelectedLogo(logoId);
+    const selectedPredefinedLogo = predefinedLogos.find(logo => logo.id === logoId);
+    if (selectedPredefinedLogo) {
+      onLogoSelect({ type: 'emoji', value: selectedPredefinedLogo.emoji });
     }
   };
 
@@ -90,7 +100,7 @@ export const AddLocationDialog = ({ open, onOpenChange }: AddLocationDialogProps
                   className={`p-2 border-2 ${
                     selectedLogo === logo.id ? 'border-[#9b87f5]' : 'border-gray-200'
                   } rounded-lg relative cursor-pointer flex items-center justify-center`}
-                  onClick={() => setSelectedLogo(logo.id)}
+                  onClick={() => handleLogoSelect(logo.id)}
                 >
                   <span className="text-2xl sm:text-3xl" role="img" aria-label={logo.label}>
                     {logo.emoji}
