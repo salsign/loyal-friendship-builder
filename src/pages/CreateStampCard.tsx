@@ -1,13 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { ChevronLeft } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { StampCardForm } from "@/components/stamp-card/StampCardForm";
 import { StampCardPreview } from "@/components/stamp-card/StampCardPreview";
+import { Progress } from "@/components/ui/progress";
 import { useState } from "react";
 import { StampCardFormValues } from "@/types/stamp-card";
 
+const STEPS = ["Card Design", "Rewards", "Locations", "Review"];
+
 const CreateStampCard = () => {
+  const [currentStep, setCurrentStep] = useState(0);
   const [formValues, setFormValues] = useState<StampCardFormValues>({
     cardName: "",
     stamps: 6,
@@ -16,11 +19,13 @@ const CreateStampCard = () => {
     websiteUrl: "",
     businessName: "",
     offerDetails: "",
-    selectedIcon: "circle", // Set a default icon
+    selectedIcon: "circle",
     customImage: null,
   });
 
-  console.log("Form values updated:", formValues); // Add logging to track updates
+  console.log("Form values updated:", formValues);
+
+  const progress = ((currentStep + 1) / STEPS.length) * 100;
 
   return (
     <div className="min-h-screen bg-[#F6F6F7] py-8">
@@ -41,16 +46,21 @@ const CreateStampCard = () => {
           </Button>
         </div>
 
-        <Tabs defaultValue="card-design" className="w-full">
-          <TabsList className="grid w-full max-w-[600px] grid-cols-4 mb-8">
-            <TabsTrigger value="card-design" className="data-[state=active]:border-b-2 data-[state=active]:border-[#ea384c]">
-              Card Design
-            </TabsTrigger>
-            <TabsTrigger value="rewards">Rewards</TabsTrigger>
-            <TabsTrigger value="locations">Locations</TabsTrigger>
-            <TabsTrigger value="review">Review</TabsTrigger>
-          </TabsList>
-        </Tabs>
+        <div className="space-y-2 max-w-[600px]">
+          <Progress value={progress} className="h-2" />
+          <div className="flex justify-between text-sm text-gray-500">
+            {STEPS.map((step, index) => (
+              <div
+                key={step}
+                className={`${
+                  index <= currentStep ? "text-[#1A1F2C] font-medium" : ""
+                }`}
+              >
+                {step}
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div className="flex gap-8">
           <div className="flex-1 space-y-6">
