@@ -7,6 +7,7 @@ import { Progress } from "@/components/ui/progress";
 import { useState } from "react";
 import { StampCardFormValues } from "@/types/stamp-card";
 import { RewardsStep } from "@/components/stamp-card/RewardsStep";
+import { LocationsStep } from "@/components/stamp-card/LocationsStep";
 
 const STEPS = ["Card Design", "Rewards", "Locations", "Review"];
 
@@ -55,6 +56,8 @@ const CreateStampCard = () => {
         return <StampCardForm onFormChange={setFormValues} />;
       case 1:
         return <RewardsStep formValues={formValues} />;
+      case 2:
+        return <LocationsStep />;
       default:
         return <div>Step {currentStep + 1} content coming soon...</div>;
     }
