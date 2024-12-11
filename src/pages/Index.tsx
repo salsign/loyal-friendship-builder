@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white p-0">
+    <div className="min-h-screen bg-white p-8">
       <div className="max-w-3xl mx-auto space-y-8">
         {/* Header Section */}
         <div className="space-y-2">
