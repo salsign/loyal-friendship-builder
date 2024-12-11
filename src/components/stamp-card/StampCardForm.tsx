@@ -60,9 +60,8 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
                   max={12}
                   value={formState.stamps}
                   onChange={(e) => handleChange("stamps", parseInt(e.target.value) || 6)}
-                  className="w-full"
+                  className="w-24"
                 />
-                <span className="text-sm text-[#8E9196]">(1-12)</span>
               </div>
             </div>
             <div className="flex-1">
@@ -74,9 +73,8 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
                   max={formState.stamps}
                   value={formState.joinStamps}
                   onChange={(e) => handleChange("joinStamps", parseInt(e.target.value) || 0)}
-                  className="w-full"
+                  className="w-24"
                 />
-                <span className="text-sm text-[#8E9196]">(0-{formState.stamps})</span>
               </div>
             </div>
           </div>
