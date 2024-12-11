@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    --sidebar-width: 240px;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -34,7 +35,7 @@
 
     --radius: 0.5rem;
 
-    --sidebar-background: 352 100% 62%; /* Updated to match the red color from the image */
+    --sidebar-background: 352 100% 62%;
     --sidebar-foreground: 0 0% 100%;
 
     --sidebar-primary: 0 0% 100%;
