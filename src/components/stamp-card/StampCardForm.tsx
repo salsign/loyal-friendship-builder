@@ -4,7 +4,7 @@ import { StampIconSelector } from "./StampIconSelector";
 import { AdvancedSettings } from "./AdvancedSettings";
 import { StampCardFormValues } from "@/types/stamp-card";
 import { useEffect, useState } from "react";
-import { Info } from "lucide-react";
+import { Info, Star } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -56,6 +56,10 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
         <h2 className="text-lg font-medium text-[#1A1F2C]">Card Details</h2>
         <div className="space-y-4">
           <div>
+            <div className="flex items-center gap-1 mb-1">
+              <span className="text-sm font-medium text-[#1A1F2C]">Card Name</span>
+              <Star className="h-4 w-4 text-red-500 fill-red-500" />
+            </div>
             <Input
               placeholder="Card Name"
               value={formState.cardName}
@@ -69,7 +73,10 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
           <div className="flex gap-4">
             <div className="flex-1">
               <div className="flex items-center gap-2">
-                <p className="font-medium text-[#1A1F2C]">Stamps</p>
+                <div className="flex items-center gap-1">
+                  <p className="font-medium text-[#1A1F2C]">Stamps</p>
+                  <Star className="h-4 w-4 text-red-500 fill-red-500" />
+                </div>
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger>
@@ -119,6 +126,10 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
             </div>
           </div>
           <div>
+            <div className="flex items-center gap-1 mb-1">
+              <span className="text-sm font-medium text-[#1A1F2C]">Card Description</span>
+              <Star className="h-4 w-4 text-red-500 fill-red-500" />
+            </div>
             <Textarea
               placeholder="Card Description"
               value={formState.cardDescription}
@@ -141,6 +152,10 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
         <h2 className="text-lg font-medium text-[#1A1F2C]">Business Details</h2>
         <div className="space-y-4">
           <div>
+            <div className="flex items-center gap-1 mb-1">
+              <span className="text-sm font-medium text-[#1A1F2C]">Business Name</span>
+              <Star className="h-4 w-4 text-red-500 fill-red-500" />
+            </div>
             <Input
               placeholder="Business Name"
               value={formState.businessName}
