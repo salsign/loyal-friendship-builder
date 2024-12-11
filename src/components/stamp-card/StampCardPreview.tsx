@@ -23,7 +23,7 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
         <Switch
           checked={showStamps}
           onCheckedChange={setShowStamps}
-          className="data-[state=checked]:bg-[#F2FCE2]"
+          className="data-[state=checked]:bg-[#5BC236]"
         />
       </div>
 
