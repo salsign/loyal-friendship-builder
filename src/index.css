@@ -34,7 +34,7 @@
 
     --radius: 0.5rem;
 
-    --sidebar-background: 352 100% 62%; /* Updated to match the red color from the image */
+    --sidebar-background: 352 100% 62%;
     --sidebar-foreground: 0 0% 100%;
 
     --sidebar-primary: 0 0% 100%;
@@ -45,6 +45,13 @@
 
     --sidebar-border: 0 0% 100% / 0.1;
     --sidebar-ring: 0 0% 100% / 0.1;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    width: 100%;
   }
 
   .dark {
