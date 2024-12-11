@@ -4,6 +4,7 @@ import CreateStampCard from "./pages/CreateStampCard";
 import Members from "./pages/Members";
 import Communications from "./pages/Communications";
 import Campaigns from "./pages/Campaigns";
+import Dashboard from "./pages/Dashboard";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import "./App.css";
@@ -16,6 +17,7 @@ function App() {
           <AppSidebar />
           <main className="flex-1">
             <Routes>
+              <Route path="/" element={<Dashboard />} />
               <Route path="/stamp-cards" element={<Index />} />
               <Route path="/stamp-cards/create" element={<CreateStampCard />} />
               <Route path="/members" element={<Members />} />
