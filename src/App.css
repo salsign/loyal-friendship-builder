@@ -8,8 +8,7 @@
 
 /* Ensure the sidebar is fixed and content scrolls */
 main {
-  margin-left: var(--sidebar-width);
-  width: calc(100% - var(--sidebar-width));
+  width: 100%;
   min-height: 100vh;
   overflow-y: auto;
 }
