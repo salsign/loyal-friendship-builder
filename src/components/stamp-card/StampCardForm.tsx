@@ -4,7 +4,7 @@ import { StampIconSelector } from "./StampIconSelector";
 import { AdvancedSettings } from "./AdvancedSettings";
 import { StampCardFormValues } from "@/types/stamp-card";
 import { useEffect, useState } from "react";
-import { Info, Star } from "lucide-react";
+import { Info } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -58,7 +58,7 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
           <div>
             <div className="flex items-center gap-1 mb-1">
               <span className="text-sm font-medium text-[#1A1F2C]">Card Name</span>
-              <Star className="h-4 w-4 text-red-500 fill-red-500" />
+              <span className="text-red-500">*</span>
             </div>
             <Input
               placeholder="Card Name"
@@ -75,7 +75,7 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-1">
                   <p className="font-medium text-[#1A1F2C]">Stamps</p>
-                  <Star className="h-4 w-4 text-red-500 fill-red-500" />
+                  <span className="text-red-500">*</span>
                 </div>
                 <TooltipProvider>
                   <Tooltip>
@@ -128,7 +128,7 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
           <div>
             <div className="flex items-center gap-1 mb-1">
               <span className="text-sm font-medium text-[#1A1F2C]">Card Description</span>
-              <Star className="h-4 w-4 text-red-500 fill-red-500" />
+              <span className="text-red-500">*</span>
             </div>
             <Textarea
               placeholder="Card Description"
@@ -154,7 +154,7 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
           <div>
             <div className="flex items-center gap-1 mb-1">
               <span className="text-sm font-medium text-[#1A1F2C]">Business Name</span>
-              <Star className="h-4 w-4 text-red-500 fill-red-500" />
+              <span className="text-red-500">*</span>
             </div>
             <Input
               placeholder="Business Name"
