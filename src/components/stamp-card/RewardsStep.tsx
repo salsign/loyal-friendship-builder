@@ -14,7 +14,7 @@ export const RewardsStep = () => {
         </div>
       </div>
 
-      <Button variant="outline" className="w-full justify-center gap-2 border-[#D946EF] bg-[#D946EF] text-white hover:bg-[#D946EF]/90 hover:text-white">
+      <Button variant="outline" className="w-full justify-center gap-2 border-[#FF4B55] bg-[#FF4B55] text-white hover:bg-[#FF4B55]/90 hover:text-white">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M8 3.33337V12.6667" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           <path d="M3.33331 8H12.6666" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
