@@ -2,10 +2,20 @@ import { Circle, Coffee, Heart, Check, UtensilsCrossed } from "lucide-react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 
-export const StampIconSelector = () => {
+interface StampIconSelectorProps {
+  onSelectIcon: (icon: string) => void;
+  onCustomImageUpload: (imageUrl: string) => void;
+}
+
+export const StampIconSelector = ({ onSelectIcon, onCustomImageUpload }: StampIconSelectorProps) => {
   const [isExpanded, setIsExpanded] = useState(true);
   const [selectedIcon, setSelectedIcon] = useState<string>("circle");
   const [customImage, setCustomImage] = useState<string | null>(null);
+
+  const handleIconSelect = (icon: string) => {
+    setSelectedIcon(icon);
+    onSelectIcon(icon);
+  };
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -17,8 +27,10 @@ export const StampIconSelector = () => {
       
       const reader = new FileReader();
       reader.onload = (e) => {
-        setCustomImage(e.target?.result as string);
+        const imageUrl = e.target?.result as string;
+        setCustomImage(imageUrl);
         setSelectedIcon("custom");
+        onCustomImageUpload(imageUrl);
       };
       reader.readAsDataURL(file);
     }
@@ -56,7 +68,7 @@ export const StampIconSelector = () => {
             {/* Red Circle */}
             <div 
               className={`p-4 border-2 ${selectedIcon === 'circle' ? 'border-[#9b87f5]' : 'border-gray-200'} rounded-lg relative cursor-pointer`}
-              onClick={() => setSelectedIcon('circle')}
+              onClick={() => handleIconSelect('circle')}
             >
               <Circle className="w-12 h-12 text-[#ea384c]" />
               {selectedIcon === 'circle' && (
@@ -69,7 +81,7 @@ export const StampIconSelector = () => {
             {/* Coffee Bean/Cup */}
             <div 
               className={`p-4 border-2 ${selectedIcon === 'coffee' ? 'border-[#9b87f5]' : 'border-gray-200'} rounded-lg relative cursor-pointer`}
-              onClick={() => setSelectedIcon('coffee')}
+              onClick={() => handleIconSelect('coffee')}
             >
               <Coffee className="w-12 h-12 text-[#8E9196]" />
               {selectedIcon === 'coffee' && (
@@ -82,7 +94,7 @@ export const StampIconSelector = () => {
             {/* Fork and Knife */}
             <div 
               className={`p-4 border-2 ${selectedIcon === 'utensils' ? 'border-[#9b87f5]' : 'border-gray-200'} rounded-lg relative cursor-pointer`}
-              onClick={() => setSelectedIcon('utensils')}
+              onClick={() => handleIconSelect('utensils')}
             >
               <UtensilsCrossed className="w-12 h-12 text-[#8E9196]" />
               {selectedIcon === 'utensils' && (
@@ -95,7 +107,7 @@ export const StampIconSelector = () => {
             {/* Heart */}
             <div 
               className={`p-4 border-2 ${selectedIcon === 'heart' ? 'border-[#9b87f5]' : 'border-gray-200'} rounded-lg relative cursor-pointer`}
-              onClick={() => setSelectedIcon('heart')}
+              onClick={() => handleIconSelect('heart')}
             >
               <Heart className="w-12 h-12 text-[#8E9196]" />
               {selectedIcon === 'heart' && (

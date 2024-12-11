@@ -16,7 +16,11 @@ const CreateStampCard = () => {
     websiteUrl: "",
     businessName: "",
     offerDetails: "",
+    selectedIcon: "circle", // Set a default icon
+    customImage: null,
   });
+
+  console.log("Form values updated:", formValues); // Add logging to track updates
 
   return (
     <div className="min-h-screen bg-[#F6F6F7] py-8">
