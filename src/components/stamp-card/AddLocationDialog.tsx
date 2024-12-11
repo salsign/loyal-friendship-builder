@@ -51,11 +51,11 @@ export const AddLocationDialog = ({ open, onOpenChange }: AddLocationDialogProps
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="w-[90vw] max-w-[380px] p-4 sm:p-6">
         <DialogHeader>
           <DialogTitle>Add location</DialogTitle>
         </DialogHeader>
-        <div className="space-y-4 py-4">
+        <div className="space-y-3 py-2">
           <div className="space-y-2">
             <Label htmlFor="businessName">
               Business name<span className="text-red-500">*</span>
@@ -76,41 +76,41 @@ export const AddLocationDialog = ({ open, onOpenChange }: AddLocationDialogProps
             </div>
           </div>
 
-          <div className="space-y-4 border-t border-b py-4">
+          <div className="space-y-3 border-t border-b py-3">
             <div className="flex items-center justify-between">
               <Label>Business Logo</Label>
             </div>
             
             <p className="text-sm text-[#8E9196]">Select a logo or upload your own image.</p>
             
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-4 gap-2">
               {predefinedLogos.map((logo) => (
                 <div
                   key={logo.id}
-                  className={`p-4 border-2 ${
+                  className={`p-2 border-2 ${
                     selectedLogo === logo.id ? 'border-[#9b87f5]' : 'border-gray-200'
                   } rounded-lg relative cursor-pointer flex items-center justify-center`}
                   onClick={() => setSelectedLogo(logo.id)}
                 >
-                  <span className="text-4xl" role="img" aria-label={logo.label}>
+                  <span className="text-2xl sm:text-3xl" role="img" aria-label={logo.label}>
                     {logo.emoji}
                   </span>
                   {selectedLogo === logo.id && (
-                    <div className="absolute top-2 right-2 w-5 h-5 bg-[#9b87f5] rounded-full flex items-center justify-center">
-                      <Check className="w-3 h-3 text-white" />
+                    <div className="absolute top-1 right-1 w-4 h-4 bg-[#9b87f5] rounded-full flex items-center justify-center">
+                      <Check className="w-2 h-2 text-white" />
                     </div>
                   )}
                 </div>
               ))}
             </div>
 
-            <div className="mt-4">
+            <div className="mt-3">
               <p className="text-sm font-medium mb-2">Upload custom logo</p>
               <Input
                 type="file"
                 accept=".jpg,.jpeg,.png,.gif"
                 onChange={handleFileUpload}
-                className="cursor-pointer"
+                className="cursor-pointer text-sm"
               />
               <p className="text-xs text-gray-500 mt-1">
                 Supported formats: JPG, PNG, GIF. Max size: 2MB
@@ -118,9 +118,9 @@ export const AddLocationDialog = ({ open, onOpenChange }: AddLocationDialogProps
             </div>
 
             {customLogo && selectedLogo === 'custom' && (
-              <div className="mt-4">
+              <div className="mt-3">
                 <p className="text-sm font-medium mb-2">Preview:</p>
-                <div className="w-20 h-20 rounded-lg overflow-hidden">
+                <div className="w-16 h-16 rounded-lg overflow-hidden">
                   <img 
                     src={customLogo} 
                     alt="Custom logo" 
