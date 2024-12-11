@@ -8,7 +8,11 @@ interface BusinessLogo {
   value: string;
 }
 
-export const LocationsStep = () => {
+interface LocationsStepProps {
+  onLogoSelect: (logo: BusinessLogo) => void;
+}
+
+export const LocationsStep = ({ onLogoSelect }: LocationsStepProps) => {
   console.log("Rendering LocationsStep component");
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedLogo, setSelectedLogo] = useState<BusinessLogo | null>(null);
@@ -16,6 +20,7 @@ export const LocationsStep = () => {
   const handleLogoSelect = (logo: BusinessLogo) => {
     console.log("Logo selected:", logo);
     setSelectedLogo(logo);
+    onLogoSelect(logo);
   };
 
   return (
