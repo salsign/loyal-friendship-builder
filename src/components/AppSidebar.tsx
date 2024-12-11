@@ -50,9 +50,9 @@ const menuItems = [
 export function AppSidebar() {
   return (
     <Sidebar variant="inset" className="bg-sidebar">
-      <div className="py-3 text-sidebar-foreground text-center">
-        <h2 className="text-lg font-bold">ZAINAB</h2>
-        <p className="text-xs">FOOD</p>
+      <div className="py-2 text-sidebar-foreground text-center">
+        <h2 className="text-lg font-bold leading-none">ZAINAB</h2>
+        <p className="text-xs mt-0.5">FOOD</p>
       </div>
 
       <SidebarGroup>
