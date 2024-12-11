@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
-import { RotateCw, Circle, Coffee, Heart, UtensilsCrossed } from "lucide-react";
+import { RotateCw, Circle, Coffee, Heart, UtensilsCrossed, Store } from "lucide-react";
 import { StampCardFormValues } from "@/types/stamp-card";
 
 interface StampCardPreviewProps {
@@ -61,8 +61,8 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
           {/* Front of the card */}
           <div className={`absolute inset-0 backface-hidden transition-all duration-500 ${isFlipped ? "opacity-0" : "opacity-100"}`}>
             <div className="flex flex-col items-center pt-12 px-6 h-full">
-              <div className="w-20 h-20 bg-gray-200 rounded-lg mb-6 flex items-center justify-center text-[10px] text-gray-500">
-                YOUR LOGO HERE
+              <div className="w-20 h-20 bg-gray-100 rounded-lg mb-6 flex items-center justify-center">
+                <Store className="w-12 h-12 text-gray-500" />
               </div>
               <p className="text-center text-xs font-medium mb-6 w-full px-2 break-words whitespace-pre-wrap overflow-hidden">{formValues.cardDescription || "Card Description"}</p>
               <div className="grid grid-cols-3 gap-3 w-full">
@@ -78,8 +78,8 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
           {/* Back of the card */}
           <div className={`absolute inset-0 backface-hidden transition-all duration-500 rotate-y-180 ${isFlipped ? "opacity-100" : "opacity-0"}`}>
             <div className="flex flex-col items-center pt-12 px-6">
-              <div className="w-20 h-20 bg-gray-200 rounded-lg mb-6 flex items-center justify-center text-[10px] text-gray-500">
-                YOUR LOGO HERE
+              <div className="w-20 h-20 bg-gray-100 rounded-lg mb-6 flex items-center justify-center">
+                <Store className="w-12 h-12 text-gray-500" />
               </div>
               <h3 className="text-lg font-medium mb-4">{formValues.businessName || "Business Name"}</h3>
               {formValues.websiteUrl && (
