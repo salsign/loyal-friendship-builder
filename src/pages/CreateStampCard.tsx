@@ -35,6 +35,13 @@ const CreateStampCard = () => {
     }
   };
 
+  const handleBack = () => {
+    if (currentStep > 0) {
+      console.log("Moving to previous step:", currentStep - 1);
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
   const handleSaveAndExit = () => {
     console.log("Saving and exiting...");
     // Here you would typically save the form state
@@ -92,13 +99,24 @@ const CreateStampCard = () => {
           <div className="flex-1 space-y-6">
             {renderStepContent()}
             <div className="flex justify-between pt-6">
-              <Button
-                variant="outline"
-                onClick={handleSaveAndExit}
-                className="px-6"
-              >
-                Save & Exit
-              </Button>
+              <div className="space-x-4">
+                {currentStep > 0 && (
+                  <Button
+                    variant="outline"
+                    onClick={handleBack}
+                    className="px-6"
+                  >
+                    Back
+                  </Button>
+                )}
+                <Button
+                  variant="outline"
+                  onClick={handleSaveAndExit}
+                  className="px-6"
+                >
+                  Save & Exit
+                </Button>
+              </div>
               <Button 
                 onClick={handleNext}
                 className="px-6"
