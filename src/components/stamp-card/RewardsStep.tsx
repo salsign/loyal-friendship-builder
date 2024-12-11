@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Info } from "lucide-react";
+import { Info, Gift } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -71,10 +71,11 @@ export const RewardsStep = ({ formValues }: RewardsStepProps) => {
                     }`}
                   >
                     <div className={`h-12 w-12 flex items-center justify-center rounded-lg`} style={{ backgroundColor: type.bgColor }}>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 15C12.7956 15 13.5587 14.6839 14.1213 14.1213C14.6839 13.5587 15 12.7956 15 12C15 11.2044 14.6839 10.4413 14.1213 9.87868C13.5587 9.31607 12.7956 9 12 9C11.2044 9 10.4413 9.31607 9.87868 9.87868C9.31607 10.4413 9 11.2044 9 12C9 12.7956 9.31607 13.5587 9.87868 14.1213C10.4413 14.6839 11.2044 15 12 15Z" stroke={type.color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M19.7778 12C19.7778 12.9137 19.6323 13.8196 19.35 14.6793C19.0677 15.5389 18.6531 16.3399 18.1252 17.0505C17.5973 17.7611 16.9633 18.3711 16.2445 18.8709C15.5256 19.3706 14.7335 19.7516 13.9 20M4.22223 12C4.22223 11.0863 4.36771 10.1804 4.65002 9.32074C4.93233 8.46108 5.34694 7.66013 5.87484 6.94954C6.40274 6.23894 7.03671 5.62891 7.75557 5.12914C8.47442 4.62936 9.26654 4.24842 10.1 4M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke={type.color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
+                      <Gift 
+                        size={24} 
+                        stroke={type.color}
+                        className="transition-opacity"
+                      />
                     </div>
                     <span className="text-sm font-medium capitalize">{type.id}</span>
                   </div>
