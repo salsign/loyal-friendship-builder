@@ -23,11 +23,11 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
       case 'circle':
         return <Circle className="w-full h-full text-[#ea384c]" />;
       case 'coffee':
-        return <Coffee className="w-full h-full text-[#8E9196]" />;
+        return <Coffee className="w-full h-full text-[#8B4513]" />;
       case 'utensils':
-        return <UtensilsCrossed className="w-full h-full text-[#8E9196]" />;
+        return <UtensilsCrossed className="w-full h-full text-[#555555]" />;
       case 'heart':
-        return <Heart className="w-full h-full text-[#8E9196]" />;
+        return <Heart className="w-full h-full text-[#ea384c] fill-current" />;
       case 'custom':
         return formValues.customImage ? (
           <img 
