@@ -8,6 +8,4 @@ export type StampCardFormValues = {
   offerDetails: string;
   selectedIcon?: string;
   customImage?: string | null;
-  logo?: string | null;
-  selectedEmoji?: string | null;
 };
