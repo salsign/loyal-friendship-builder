@@ -4,6 +4,13 @@ import { StampIconSelector } from "./StampIconSelector";
 import { AdvancedSettings } from "./AdvancedSettings";
 import { StampCardFormValues } from "@/types/stamp-card";
 import { useEffect, useState } from "react";
+import { Info } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface StampCardFormProps {
   onFormChange: (values: StampCardFormValues) => void;
@@ -52,7 +59,19 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
           </div>
           <div className="flex gap-4">
             <div className="flex-1">
-              <p className="font-medium text-[#1A1F2C]">Stamps</p>
+              <div className="flex items-center gap-2">
+                <p className="font-medium text-[#1A1F2C]">Stamps</p>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <Info className="h-4 w-4 text-gray-500" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Total number of stamps needed to complete the card and receive the reward</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
               <div className="flex items-center gap-2">
                 <Input
                   type="number"
@@ -65,7 +84,19 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
               </div>
             </div>
             <div className="flex-1">
-              <p className="font-medium text-[#1A1F2C]">Join Stamps</p>
+              <div className="flex items-center gap-2">
+                <p className="font-medium text-[#1A1F2C]">Join Stamps</p>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <Info className="h-4 w-4 text-gray-500" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Number of stamps given when a customer first joins</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
               <div className="flex items-center gap-2">
                 <Input
                   type="number"
