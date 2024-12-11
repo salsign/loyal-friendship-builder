@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <SidebarProvider>
-        <div className="flex min-h-screen w-full">
+        <div className="flex min-h-screen w-full bg-sky-500">
           <AppSidebar />
           <main className="flex-1">
             <Routes>
