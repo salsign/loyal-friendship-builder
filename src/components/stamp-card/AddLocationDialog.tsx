@@ -8,7 +8,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Info, Upload } from "lucide-react";
-import { useState, useRef } from "react";
 
 interface AddLocationDialogProps {
   open: boolean;
@@ -17,9 +16,6 @@ interface AddLocationDialogProps {
 
 export const AddLocationDialog = ({ open, onOpenChange }: AddLocationDialogProps) => {
   console.log("Rendering AddLocationDialog component");
-  const [selectedLogo, setSelectedLogo] = useState<string | null>(null);
-  const [uploadedLogo, setUploadedLogo] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const predefinedLogos = [
     { id: 'diamond', icon: '💎' },
@@ -31,24 +27,6 @@ export const AddLocationDialog = ({ open, onOpenChange }: AddLocationDialogProps
     { id: 'star', icon: '⭐' },
     { id: 'shop', icon: '🏪' },
   ];
-
-  const handleLogoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const result = e.target?.result as string;
-        setUploadedLogo(result);
-        setSelectedLogo(null);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleLogoSelect = (logo: string) => {
-    setSelectedLogo(logo);
-    setUploadedLogo(null);
-  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -82,27 +60,11 @@ export const AddLocationDialog = ({ open, onOpenChange }: AddLocationDialogProps
               <Label htmlFor="logo">Logo</Label>
               <Info className="h-4 w-4 text-gray-400" />
             </div>
-            <input
-              type="file"
-              ref={fileInputRef}
-              className="hidden"
-              accept="image/*"
-              onChange={handleLogoUpload}
-            />
-            <div 
-              className="border-2 border-dashed rounded-md p-4 cursor-pointer hover:border-gray-400 transition-colors"
-              onClick={() => fileInputRef.current?.click()}
-            >
-              {uploadedLogo ? (
-                <div className="flex flex-col items-center justify-center">
-                  <img src={uploadedLogo} alt="Uploaded logo" className="w-20 h-20 object-contain" />
-                </div>
-              ) : (
-                <div className="flex flex-col items-center justify-center gap-2">
-                  <Upload className="h-6 w-6 text-gray-400" />
-                  <span className="text-sm text-blue-500">Upload</span>
-                </div>
-              )}
+            <div className="border-2 border-dashed rounded-md p-4">
+              <div className="flex flex-col items-center justify-center gap-2">
+                <Upload className="h-6 w-6 text-gray-400" />
+                <span className="text-sm text-blue-500">Upload</span>
+              </div>
             </div>
             <p className="text-xs text-gray-500">JPG/PNG/GIF images only</p>
           </div>
@@ -114,8 +76,7 @@ export const AddLocationDialog = ({ open, onOpenChange }: AddLocationDialogProps
                 <Button
                   key={logo.id}
                   variant="outline"
-                  className={`h-12 text-xl ${selectedLogo === logo.icon ? 'ring-2 ring-blue-500' : ''}`}
-                  onClick={() => handleLogoSelect(logo.icon)}
+                  className="h-12 text-xl"
                 >
                   {logo.icon}
                 </Button>
