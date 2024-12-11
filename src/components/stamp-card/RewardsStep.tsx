@@ -85,7 +85,16 @@ export const RewardsStep = ({ formValues }: RewardsStepProps) => {
             <div className="space-y-2">
               <Label>Reward name*</Label>
               <Input placeholder="Free coffee" />
-              <div className="text-sm text-gray-500">after {formValues.stamps} stamps</div>
+              {selectedType === 'signup' ? (
+                <>
+                  <div className="text-sm text-gray-500">upon joining</div>
+                  <div className="mt-4 text-sm text-gray-600">
+                    This reward will issue automatically upon sign up.
+                  </div>
+                </>
+              ) : (
+                <div className="text-sm text-gray-500">after {formValues.stamps} stamps</div>
+              )}
             </div>
             <div className="space-y-4">
               <Label>Settings</Label>
