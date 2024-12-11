@@ -9,3 +9,12 @@ export type StampCardFormValues = {
   selectedIcon?: string;
   customImage?: string | null;
 };
+
+export type LocationDetails = {
+  businessName: string;
+  address: string;
+  logo?: {
+    type: 'emoji' | 'custom';
+    value: string;
+  };
+};
