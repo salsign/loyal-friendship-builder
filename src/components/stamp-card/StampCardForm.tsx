@@ -50,33 +50,35 @@ export const StampCardForm = ({ onFormChange }: StampCardFormProps) => {
               onChange={(e) => handleChange("cardName", e.target.value)}
             />
           </div>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="font-medium text-[#1A1F2C]">Number of stamps needed</p>
-              <p className="text-sm text-[#8E9196]">How many stamps to complete the card (1-12)</p>
+          <div className="flex gap-4">
+            <div className="flex-1">
+              <p className="font-medium text-[#1A1F2C]">Stamps</p>
+              <div className="flex items-center gap-2">
+                <Input
+                  type="number"
+                  min={1}
+                  max={12}
+                  value={formState.stamps}
+                  onChange={(e) => handleChange("stamps", parseInt(e.target.value) || 6)}
+                  className="w-full"
+                />
+                <span className="text-sm text-[#8E9196]">(1-12)</span>
+              </div>
             </div>
-            <Input
-              type="number"
-              min={1}
-              max={12}
-              value={formState.stamps}
-              onChange={(e) => handleChange("stamps", parseInt(e.target.value) || 6)}
-              className="w-20"
-            />
-          </div>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="font-medium text-[#1A1F2C]">Join bonus stamps</p>
-              <p className="text-sm text-[#8E9196]">Number of stamps given when joining</p>
+            <div className="flex-1">
+              <p className="font-medium text-[#1A1F2C]">Join Stamps</p>
+              <div className="flex items-center gap-2">
+                <Input
+                  type="number"
+                  min={0}
+                  max={formState.stamps}
+                  value={formState.joinStamps}
+                  onChange={(e) => handleChange("joinStamps", parseInt(e.target.value) || 0)}
+                  className="w-full"
+                />
+                <span className="text-sm text-[#8E9196]">(0-{formState.stamps})</span>
+              </div>
             </div>
-            <Input
-              type="number"
-              min={0}
-              max={formState.stamps}
-              value={formState.joinStamps}
-              onChange={(e) => handleChange("joinStamps", parseInt(e.target.value) || 0)}
-              className="w-20"
-            />
           </div>
           <div>
             <Textarea
