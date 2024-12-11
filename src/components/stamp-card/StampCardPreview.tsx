@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
-import { Globe, RotateCw, User, Gift, Settings, Circle, Coffee, Heart, UtensilsCrossed } from "lucide-react";
+import { RotateCw, Circle, Coffee, Heart, UtensilsCrossed } from "lucide-react";
 import { StampCardFormValues } from "@/types/stamp-card";
 
 interface StampCardPreviewProps {
@@ -72,16 +72,6 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
                   </div>
                 ))}
               </div>
-              <div className="mt-auto mb-3 w-full pointer-events-none select-none">
-                <Button 
-                  variant="destructive" 
-                  className="w-full bg-[#ea384c] hover:bg-[#ea384c] cursor-default"
-                  tabIndex={-1}
-                  aria-hidden="true"
-                >
-                  STAMP ME
-                </Button>
-              </div>
             </div>
           </div>
 
@@ -94,7 +84,6 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
               <h3 className="text-lg font-medium mb-4">{formValues.businessName || "Business Name"}</h3>
               {formValues.websiteUrl && (
                 <a href={formValues.websiteUrl} className="text-blue-600 flex items-center gap-1 mb-6" target="_blank" rel="noopener noreferrer">
-                  <Globe className="w-4 h-4" />
                   Website
                 </a>
               )}
@@ -112,13 +101,6 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
           >
             <RotateCw className="w-4 h-4 text-gray-600" />
           </button>
-        </div>
-
-        {/* Bottom navigation icons */}
-        <div className="flex justify-center gap-12 mt-4">
-          <User className="w-6 h-6 text-gray-400" />
-          <Gift className="w-6 h-6 text-gray-400" />
-          <Settings className="w-6 h-6 text-gray-400" />
         </div>
       </div>
 
