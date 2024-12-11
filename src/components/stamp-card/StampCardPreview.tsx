@@ -42,7 +42,24 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
   };
 
   const renderLogo = () => {
-    // This is a placeholder for now - we'll need to connect it to the actual selected logo
+    if (formValues.uploadedLogo) {
+      return (
+        <div className="w-20 h-20 rounded-lg mb-6 flex items-center justify-center">
+          <img 
+            src={formValues.uploadedLogo} 
+            alt="Business logo" 
+            className="w-full h-full object-contain"
+          />
+        </div>
+      );
+    } else if (formValues.selectedEmoji) {
+      return (
+        <div className="w-20 h-20 rounded-lg mb-6 flex items-center justify-center text-4xl">
+          {formValues.selectedEmoji}
+        </div>
+      );
+    }
+    
     return (
       <div className="w-20 h-20 bg-gray-200 rounded-lg mb-6 flex items-center justify-center text-[10px] text-gray-500">
         YOUR LOGO HERE

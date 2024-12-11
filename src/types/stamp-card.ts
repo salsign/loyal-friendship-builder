@@ -1,4 +1,4 @@
-export type StampCardFormValues = {
+export interface StampCardFormValues {
   cardName: string;
   stamps: number;
   joinStamps: number;
@@ -6,6 +6,8 @@ export type StampCardFormValues = {
   websiteUrl: string;
   businessName: string;
   offerDetails: string;
-  selectedIcon?: string;
-  customImage?: string | null;
-};
+  selectedIcon: string;
+  customImage: string | null;
+  uploadedLogo?: string | null;
+  selectedEmoji?: string | null;
+}
