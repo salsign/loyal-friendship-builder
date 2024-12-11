@@ -1,5 +1,4 @@
 import { Switch } from "@/components/ui/switch";
-import { Input } from "@/components/ui/input";
 
 interface AdvancedSettingsProps {
   stamps: number;
@@ -35,34 +34,6 @@ export const AdvancedSettings = ({
         </button>
       </div>
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="font-medium text-[#1A1F2C]">Number of stamps needed</p>
-            <p className="text-sm text-[#8E9196]">How many stamps to complete the card (1-12)</p>
-          </div>
-          <Input
-            type="number"
-            min={1}
-            max={12}
-            value={stamps}
-            onChange={(e) => onStampsChange(parseInt(e.target.value) || 6)}
-            className="w-20"
-          />
-        </div>
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="font-medium text-[#1A1F2C]">Join bonus stamps</p>
-            <p className="text-sm text-[#8E9196]">Number of stamps given when joining</p>
-          </div>
-          <Input
-            type="number"
-            min={0}
-            max={stamps}
-            value={joinStamps}
-            onChange={(e) => onJoinStampsChange(parseInt(e.target.value) || 0)}
-            className="w-20"
-          />
-        </div>
         <div className="flex items-center justify-between">
           <div>
             <p className="font-medium text-[#1A1F2C]">Stamping time delay</p>
