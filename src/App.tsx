@@ -11,7 +11,7 @@ function App() {
       <SidebarProvider>
         <div className="flex min-h-screen w-full">
           <AppSidebar />
-          <main className="flex-1 p-0">
+          <main className="flex-1">
             <Routes>
               <Route path="/stamp-cards" element={<Index />} />
               <Route path="/stamp-cards/create" element={<CreateStampCard />} />

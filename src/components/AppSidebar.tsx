@@ -50,13 +50,15 @@ const menuItems = [
 export function AppSidebar() {
   return (
     <Sidebar variant="inset" className="bg-sidebar">
-      <div className="py-2 text-sidebar-foreground text-center">
-        <h2 className="text-lg font-bold leading-none">ZAINAB</h2>
-        <p className="text-xs mt-0.5">FOOD</p>
+      {/* Logo/Business Name Section */}
+      <div className="p-4 text-sidebar-foreground text-center">
+        <h2 className="text-lg font-bold mb-1">ZAINAB</h2>
+        <p className="text-xs">FOOD</p>
       </div>
 
+      {/* Menu Items */}
       <SidebarGroup>
-        <SidebarGroupContent className="pt-0">
+        <SidebarGroupContent>
           <SidebarMenu>
             {menuItems.map((item) => (
               <SidebarMenuItem key={item.label}>
