@@ -23,7 +23,7 @@ const CreateStampCard = () => {
   console.log("Form values updated:", formValues); // Add logging to track updates
 
   return (
-    <div className="min-h-screen bg-[#F6F6F7] py-8">
+    <div className="min-h-screen bg-[#F6F6F7]">
       <div className="container max-w-6xl space-y-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-6">
