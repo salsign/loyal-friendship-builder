@@ -21,8 +21,7 @@ export const LocationsStep = () => {
         </p>
 
         <Button 
-          variant="outline" 
-          className="w-full justify-center gap-2 border-dashed border-2"
+          className="w-full justify-center gap-2"
           onClick={() => console.log("Add location clicked")}
         >
           <Plus className="h-4 w-4" />
