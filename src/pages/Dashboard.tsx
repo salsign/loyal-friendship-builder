@@ -1,7 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Users, Stamp, Gift, UserPlus } from "lucide-react"
 import {
   BarChart,
@@ -32,15 +31,6 @@ export default function Dashboard() {
     <div className="p-6 bg-background min-h-screen">
       <h1 className="text-4xl font-semibold mb-6">Dashboard</h1>
       
-      <Alert className="mb-6 bg-[#EEF1FF] border-none">
-        <div className="flex items-center gap-2">
-          <span className="bg-[#6777EE] text-white px-2 py-0.5 rounded text-sm">DEMO VIEW</span>
-          <AlertDescription>
-            Create & publish a Stamp Card first to unlock this area with your real data and functionality. Data shown is an example.
-          </AlertDescription>
-        </div>
-      </Alert>
-
       <div className="flex flex-wrap gap-4 mb-6">
         <Select defaultValue="all-locations">
           <SelectTrigger className="w-[200px]">
