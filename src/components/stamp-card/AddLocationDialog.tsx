@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Check, Circle, Coffee, Heart, Store, UtensilsCrossed, Diamond, Gift, Star } from "lucide-react";
+import { Check } from "lucide-react";
 import { useState } from "react";
 
 interface AddLocationDialogProps {
@@ -17,18 +17,18 @@ interface AddLocationDialogProps {
 
 export const AddLocationDialog = ({ open, onOpenChange }: AddLocationDialogProps) => {
   console.log("Rendering AddLocationDialog component");
-  const [selectedLogo, setSelectedLogo] = useState<string>('store');
+  const [selectedLogo, setSelectedLogo] = useState<string>('diamond');
   const [customLogo, setCustomLogo] = useState<string | null>(null);
 
   const predefinedLogos = [
-    { id: 'store', icon: Store, color: '#555555' },
-    { id: 'diamond', icon: Diamond, color: '#9b87f5' },
-    { id: 'heart', icon: Heart, color: '#ea384c' },
-    { id: 'gift', icon: Gift, color: '#FF5A5F' },
-    { id: 'coffee', icon: Coffee, color: '#8B4513' },
-    { id: 'circle', icon: Circle, color: '#ea384c' },
-    { id: 'utensils', icon: UtensilsCrossed, color: '#555555' },
-    { id: 'star', icon: Star, color: '#FFD700' },
+    { id: 'diamond', emoji: '💎', label: 'Diamond' },
+    { id: 'smile', emoji: '😊', label: 'Smile' },
+    { id: 'wink', emoji: '😉', label: 'Wink' },
+    { id: 'gift', emoji: '🎁', label: 'Gift' },
+    { id: 'heart', emoji: '❤️', label: 'Heart' },
+    { id: 'store', emoji: '🏪', label: 'Store' },
+    { id: 'star', emoji: '⭐', label: 'Star' },
+    { id: 'shop', emoji: '🛍️', label: 'Shop' },
   ];
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -84,25 +84,24 @@ export const AddLocationDialog = ({ open, onOpenChange }: AddLocationDialogProps
             <p className="text-sm text-[#8E9196]">Select a logo or upload your own image.</p>
             
             <div className="grid grid-cols-4 gap-4">
-              {predefinedLogos.map((logo) => {
-                const IconComponent = logo.icon;
-                return (
-                  <div
-                    key={logo.id}
-                    className={`p-4 border-2 ${
-                      selectedLogo === logo.id ? 'border-[#9b87f5]' : 'border-gray-200'
-                    } rounded-lg relative cursor-pointer flex items-center justify-center`}
-                    onClick={() => setSelectedLogo(logo.id)}
-                  >
-                    <IconComponent className="w-12 h-12" style={{ color: logo.color }} />
-                    {selectedLogo === logo.id && (
-                      <div className="absolute top-2 right-2 w-5 h-5 bg-[#9b87f5] rounded-full flex items-center justify-center">
-                        <Check className="w-3 h-3 text-white" />
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+              {predefinedLogos.map((logo) => (
+                <div
+                  key={logo.id}
+                  className={`p-4 border-2 ${
+                    selectedLogo === logo.id ? 'border-[#9b87f5]' : 'border-gray-200'
+                  } rounded-lg relative cursor-pointer flex items-center justify-center`}
+                  onClick={() => setSelectedLogo(logo.id)}
+                >
+                  <span className="text-4xl" role="img" aria-label={logo.label}>
+                    {logo.emoji}
+                  </span>
+                  {selectedLogo === logo.id && (
+                    <div className="absolute top-2 right-2 w-5 h-5 bg-[#9b87f5] rounded-full flex items-center justify-center">
+                      <Check className="w-3 h-3 text-white" />
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
 
             <div className="mt-4">
