@@ -21,6 +21,7 @@ interface RewardsStepProps {
 export const RewardsStep = ({ formValues }: RewardsStepProps) => {
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [expiryEnabled, setExpiryEnabled] = useState(false);
+  const [interimStamps, setInterimStamps] = useState("1");
 
   const rewardTypes = [
     { id: 'main', color: '#12B76A', bgColor: '#E7F9F1' },
@@ -90,6 +91,17 @@ export const RewardsStep = ({ formValues }: RewardsStepProps) => {
                   <div className="text-sm text-gray-500">upon joining</div>
                   <div className="mt-4 text-sm text-gray-600">
                     This reward will issue automatically upon sign up.
+                  </div>
+                </>
+              ) : selectedType === 'interim' ? (
+                <>
+                  <div className="mt-4 text-sm text-gray-600">
+                    This reward will issue automatically after <Input 
+                      type="number" 
+                      value={interimStamps}
+                      onChange={(e) => setInterimStamps(e.target.value)}
+                      className="w-16 h-8 inline-block mx-2"
+                    /> stamps is achieved.
                   </div>
                 </>
               ) : (
