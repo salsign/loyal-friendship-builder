@@ -52,8 +52,8 @@ export function AppSidebar() {
     <Sidebar variant="inset" className="bg-sidebar">
       {/* Logo/Business Name Section */}
       <div className="p-4 text-sidebar-foreground text-center">
-        <h2 className="text-xl font-bold mb-1">ZAINAB</h2>
-        <p className="text-sm">FOOD</p>
+        <h2 className="text-lg font-bold mb-1">ZAINAB</h2>
+        <p className="text-xs">FOOD</p>
       </div>
 
       {/* Menu Items */}
@@ -65,9 +65,9 @@ export function AppSidebar() {
                 <SidebarMenuButton
                   className="text-sidebar-foreground hover:bg-sidebar-accent data-[active=true]:bg-sidebar-accent"
                 >
-                  <Link to={item.path}>
-                    <item.icon className="w-6 h-6" />
-                    <span>{item.label}</span>
+                  <Link to={item.path} className="flex items-center gap-2">
+                    <item.icon className="w-5 h-5" />
+                    <span className="text-sm">{item.label}</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
