@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
-import { Globe, RotateCw, User, Gift, Settings } from "lucide-react";
+import { Globe, RotateCw, User, Gift, Settings, Circle, Coffee, Heart, UtensilsCrossed, Check } from "lucide-react";
 import { StampCardFormValues } from "@/types/stamp-card";
 
 interface StampCardPreviewProps {
@@ -15,6 +15,29 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
   
   // Ensure stamps are within the valid range (1-12)
   const numberOfStamps = Math.min(Math.max(1, formValues.stamps || 6), 12);
+
+  const renderStampIcon = () => {
+    switch (formValues.selectedIcon) {
+      case 'circle':
+        return <Circle className="w-full h-full text-[#ea384c]" />;
+      case 'coffee':
+        return <Coffee className="w-full h-full text-[#8E9196]" />;
+      case 'utensils':
+        return <UtensilsCrossed className="w-full h-full text-[#8E9196]" />;
+      case 'heart':
+        return <Heart className="w-full h-full text-[#8E9196]" />;
+      case 'custom':
+        return formValues.customImage ? (
+          <img 
+            src={formValues.customImage} 
+            alt="Custom stamp" 
+            className="w-full h-full object-cover"
+          />
+        ) : null;
+      default:
+        return null;
+    }
+  };
 
   return (
     <Card className="p-6 sticky top-8">
@@ -43,7 +66,9 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
               {showStamps && (
                 <div className="grid grid-cols-3 gap-3 w-full">
                   {[...Array(numberOfStamps)].map((_, i) => (
-                    <div key={i} className="aspect-square rounded-full border-2 border-gray-200" />
+                    <div key={i} className="aspect-square rounded-full border-2 border-gray-200 flex items-center justify-center p-1">
+                      {renderStampIcon()}
+                    </div>
                   ))}
                 </div>
               )}

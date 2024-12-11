@@ -6,4 +6,6 @@ export type StampCardFormValues = {
   websiteUrl: string;
   businessName: string;
   offerDetails: string;
+  selectedIcon?: string;
+  customImage?: string | null;
 };
