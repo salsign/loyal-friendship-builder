@@ -3,6 +3,7 @@ import Index from "./pages/Index";
 import CreateStampCard from "./pages/CreateStampCard";
 import Members from "./pages/Members";
 import Communications from "./pages/Communications";
+import Campaigns from "./pages/Campaigns";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import "./App.css";
@@ -19,6 +20,7 @@ function App() {
               <Route path="/stamp-cards/create" element={<CreateStampCard />} />
               <Route path="/members" element={<Members />} />
               <Route path="/communications" element={<Communications />} />
+              <Route path="/campaigns" element={<Campaigns />} />
             </Routes>
           </main>
         </div>
