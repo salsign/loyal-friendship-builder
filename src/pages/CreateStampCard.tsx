@@ -13,6 +13,7 @@ const STEPS = ["Card Design", "Rewards", "Locations", "Review"];
 
 const CreateStampCard = () => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [selectedLogo, setSelectedLogo] = useState<{ type: 'emoji' | 'custom'; value: string } | null>(null);
   const [formValues, setFormValues] = useState<StampCardFormValues>({
     cardName: "",
     stamps: 6,
@@ -26,6 +27,7 @@ const CreateStampCard = () => {
   });
 
   console.log("Form values updated:", formValues);
+  console.log("Selected logo:", selectedLogo);
 
   const progress = ((currentStep + 1) / STEPS.length) * 100;
 
@@ -45,9 +47,12 @@ const CreateStampCard = () => {
 
   const handleSaveAndExit = () => {
     console.log("Saving and exiting...");
-    // Here you would typically save the form state
-    // For now, just redirect to home
     window.location.href = "/";
+  };
+
+  const handleLogoSelect = (logo: { type: 'emoji' | 'custom'; value: string }) => {
+    console.log("Logo selected in CreateStampCard:", logo);
+    setSelectedLogo(logo);
   };
 
   const renderStepContent = () => {
@@ -57,7 +62,7 @@ const CreateStampCard = () => {
       case 1:
         return <RewardsStep formValues={formValues} />;
       case 2:
-        return <LocationsStep />;
+        return <LocationsStep onLogoSelect={handleLogoSelect} />;
       default:
         return <div>Step {currentStep + 1} content coming soon...</div>;
     }
@@ -130,7 +135,7 @@ const CreateStampCard = () => {
             </div>
           </div>
           <div className="w-[400px]">
-            <StampCardPreview formValues={formValues} />
+            <StampCardPreview formValues={formValues} selectedLogo={selectedLogo} />
           </div>
         </div>
       </div>

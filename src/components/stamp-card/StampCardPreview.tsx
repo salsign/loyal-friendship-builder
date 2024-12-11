@@ -17,6 +17,8 @@ export const StampCardPreview = ({ formValues, selectedLogo }: StampCardPreviewP
   const numberOfStamps = Math.min(Math.max(1, formValues.stamps || 6), 12);
 
   const renderBusinessLogo = () => {
+    console.log("Rendering business logo with:", selectedLogo);
+    
     if (selectedLogo) {
       if (selectedLogo.type === 'emoji') {
         return (
@@ -29,7 +31,7 @@ export const StampCardPreview = ({ formValues, selectedLogo }: StampCardPreviewP
           <img 
             src={selectedLogo.value} 
             alt="Business logo" 
-            className="w-12 h-12 object-cover"
+            className="w-12 h-12 object-cover rounded-lg"
           />
         );
       }
