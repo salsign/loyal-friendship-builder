@@ -1,102 +1,49 @@
 import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { PanelLeft } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Separator } from "@/components/ui/separator"
-import { Skeleton } from "@/components/ui/skeleton"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { useSidebar } from "./sidebar-context"
 
-export const SidebarTrigger = React.forwardRef<
-  React.ElementRef<typeof Button>,
-  React.ComponentProps<typeof Button>
->(({ className, onClick, ...props }, ref) => {
-  const { toggleSidebar } = useSidebar()
-
-  return (
-    <Button
-      ref={ref}
-      data-sidebar="trigger"
-      variant="ghost"
-      size="icon"
-      className={cn("h-7 w-7", className)}
-      onClick={(event) => {
-        onClick?.(event)
-        toggleSidebar()
-      }}
-      {...props}
-    >
-      <PanelLeft />
-      <span className="sr-only">Toggle Sidebar</span>
-    </Button>
-  )
-})
-
-SidebarTrigger.displayName = "SidebarTrigger"
-
-export const SidebarContent = React.forwardRef<
+export const SidebarGroup = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div">
 >(({ className, ...props }, ref) => (
-  <div
+  <div ref={ref} className={cn("px-3 py-2", className)} {...props} />
+))
+SidebarGroup.displayName = "SidebarGroup"
+
+export const SidebarGroupContent = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<"div">
+>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("space-y-1", className)} {...props} />
+))
+SidebarGroupContent.displayName = "SidebarGroupContent"
+
+export const SidebarMenu = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<"div">
+>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("", className)} {...props} />
+))
+SidebarMenu.displayName = "SidebarMenu"
+
+export const SidebarMenuItem = React.forwardRef<
+  HTMLLIElement,
+  React.ComponentProps<"li">
+>(({ className, ...props }, ref) => (
+  <li ref={ref} className={cn("list-none", className)} {...props} />
+))
+SidebarMenuItem.displayName = "SidebarMenuItem"
+
+export const SidebarMenuButton = React.forwardRef<
+  HTMLButtonElement,
+  React.ComponentProps<"button">
+>(({ className, ...props }, ref) => (
+  <button
     ref={ref}
-    data-sidebar="content"
     className={cn(
-      "flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden",
+      "flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
       className
     )}
     {...props}
   />
 ))
-
-SidebarContent.displayName = "SidebarContent"
-
-export const SidebarHeader = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div">
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    data-sidebar="header"
-    className={cn("flex flex-col gap-2 p-2", className)}
-    {...props}
-  />
-))
-
-SidebarHeader.displayName = "SidebarHeader"
-
-export const SidebarFooter = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div">
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    data-sidebar="footer"
-    className={cn("flex flex-col gap-2 p-2", className)}
-    {...props}
-  />
-))
-
-SidebarFooter.displayName = "SidebarFooter"
-
-export const SidebarSeparator = React.forwardRef<
-  React.ElementRef<typeof Separator>,
-  React.ComponentProps<typeof Separator>
->(({ className, ...props }, ref) => (
-  <Separator
-    ref={ref}
-    data-sidebar="separator"
-    className={cn("mx-2 w-auto bg-sidebar-border", className)}
-    {...props}
-  />
-))
-
-SidebarSeparator.displayName = "SidebarSeparator"
-
-// ... Additional sidebar components like SidebarGroup, SidebarMenu, etc. follow the same pattern
+SidebarMenuButton.displayName = "SidebarMenuButton"
