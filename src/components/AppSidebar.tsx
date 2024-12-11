@@ -40,10 +40,10 @@ const menuItems = [
 
 export function AppSidebar() {
   return (
-    <Sidebar variant="inset" className="bg-[#FF4B55]">
+    <Sidebar variant="inset" className="bg-sidebar">
       <SidebarContent>
         {/* Logo/Business Name Section */}
-        <div className="p-4 text-white text-center">
+        <div className="p-4 text-sidebar-foreground text-center">
           <h2 className="text-xl font-bold mb-1">ZAINAB</h2>
           <p className="text-sm">FOOD</p>
         </div>
@@ -56,7 +56,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.label}>
                   <SidebarMenuButton
                     asChild
-                    className="text-white hover:bg-white/10 data-[active=true]:bg-white/20"
+                    className="text-sidebar-foreground hover:bg-sidebar-accent data-[active=true]:bg-sidebar-accent"
                   >
                     <Link to={item.path}>
                       <item.icon className="w-6 h-6" />
