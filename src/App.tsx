@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import CreateStampCard from "./pages/CreateStampCard";
+import Members from "./pages/Members";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import "./App.css";
@@ -15,6 +16,7 @@ function App() {
             <Routes>
               <Route path="/stamp-cards" element={<Index />} />
               <Route path="/stamp-cards/create" element={<CreateStampCard />} />
+              <Route path="/members" element={<Members />} />
             </Routes>
           </main>
         </div>
