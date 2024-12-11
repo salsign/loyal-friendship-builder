@@ -52,10 +52,13 @@ export function AppSidebar() {
   return (
     <Sidebar variant="inset" className="bg-sidebar">
       <SidebarContent>
-        {/* Logo/Business Name Section */}
-        <div className="p-4 text-sidebar-foreground text-center">
-          <h2 className="text-xl font-bold mb-1">ZAINAB</h2>
-          <p className="text-sm">FOOD</p>
+        {/* Logo Section */}
+        <div className="p-4 text-sidebar-foreground">
+          <img 
+            src="/lovable-uploads/0687548f-40c1-4aff-8aa9-411a2f3c2132.png" 
+            alt="Loyaze Logo" 
+            className="w-full h-auto max-w-[180px] mx-auto"
+          />
         </div>
 
         {/* Menu Items */}
