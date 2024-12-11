@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import { useState } from "react";
+import { AddLocationDialog } from "./AddLocationDialog";
 
 export const LocationsStep = () => {
   console.log("Rendering LocationsStep component");
+  const [dialogOpen, setDialogOpen] = useState(false);
   
   return (
     <div className="space-y-6">
@@ -21,13 +24,18 @@ export const LocationsStep = () => {
         </p>
 
         <Button 
-          className="w-full justify-center gap-2"
-          onClick={() => console.log("Add location clicked")}
+          className="w-full justify-center gap-2 bg-[#FF5A5F] hover:bg-[#FF5A5F]/90 text-white"
+          onClick={() => setDialogOpen(true)}
         >
           <Plus className="h-4 w-4" />
           Add location
         </Button>
       </div>
+
+      <AddLocationDialog 
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+      />
     </div>
   );
 };
