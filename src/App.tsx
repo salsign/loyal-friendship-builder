@@ -9,13 +9,15 @@ function App() {
   return (
     <Router>
       <SidebarProvider>
-        <AppSidebar />
-        <main className="flex-1 w-0">
-          <Routes>
-            <Route path="/stamp-cards" element={<Index />} />
-            <Route path="/stamp-cards/create" element={<CreateStampCard />} />
-          </Routes>
-        </main>
+        <div className="flex min-h-screen w-full">
+          <AppSidebar />
+          <main className="flex-1">
+            <Routes>
+              <Route path="/stamp-cards" element={<Index />} />
+              <Route path="/stamp-cards/create" element={<CreateStampCard />} />
+            </Routes>
+          </main>
+        </div>
       </SidebarProvider>
     </Router>
   );
