@@ -83,7 +83,7 @@ export const StampIconSelector = ({ onSelectIcon, onCustomImageUpload }: StampIc
               className={`p-4 border-2 ${selectedIcon === 'coffee' ? 'border-[#9b87f5]' : 'border-gray-200'} rounded-lg relative cursor-pointer`}
               onClick={() => handleIconSelect('coffee')}
             >
-              <Coffee className="w-12 h-12 text-[#8E9196]" />
+              <Coffee className="w-12 h-12 text-[#8B4513]" />
               {selectedIcon === 'coffee' && (
                 <div className="absolute top-2 right-2 w-5 h-5 bg-[#9b87f5] rounded-full flex items-center justify-center">
                   <Check className="w-3 h-3 text-white" />
@@ -96,7 +96,7 @@ export const StampIconSelector = ({ onSelectIcon, onCustomImageUpload }: StampIc
               className={`p-4 border-2 ${selectedIcon === 'utensils' ? 'border-[#9b87f5]' : 'border-gray-200'} rounded-lg relative cursor-pointer`}
               onClick={() => handleIconSelect('utensils')}
             >
-              <UtensilsCrossed className="w-12 h-12 text-[#8E9196]" />
+              <UtensilsCrossed className="w-12 h-12 text-[#555555]" />
               {selectedIcon === 'utensils' && (
                 <div className="absolute top-2 right-2 w-5 h-5 bg-[#9b87f5] rounded-full flex items-center justify-center">
                   <Check className="w-3 h-3 text-white" />
@@ -109,7 +109,7 @@ export const StampIconSelector = ({ onSelectIcon, onCustomImageUpload }: StampIc
               className={`p-4 border-2 ${selectedIcon === 'heart' ? 'border-[#9b87f5]' : 'border-gray-200'} rounded-lg relative cursor-pointer`}
               onClick={() => handleIconSelect('heart')}
             >
-              <Heart className="w-12 h-12 text-[#8E9196]" />
+              <Heart className="w-12 h-12 text-[#ea384c] fill-current" />
               {selectedIcon === 'heart' && (
                 <div className="absolute top-2 right-2 w-5 h-5 bg-[#9b87f5] rounded-full flex items-center justify-center">
                   <Check className="w-3 h-3 text-white" />
