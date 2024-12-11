@@ -2,18 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { useState } from "react";
 import { AddLocationDialog } from "./AddLocationDialog";
-import { LocationDetails } from "@/types/stamp-card";
 
 export const LocationsStep = () => {
   console.log("Rendering LocationsStep component");
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [locations, setLocations] = useState<LocationDetails[]>([]);
   
-  const handleLocationSave = (location: LocationDetails) => {
-    setLocations([...locations, location]);
-    setDialogOpen(false);
-  };
-
   return (
     <div className="space-y-6">
       <div className="space-y-4">
@@ -42,7 +35,6 @@ export const LocationsStep = () => {
       <AddLocationDialog 
         open={dialogOpen}
         onOpenChange={setDialogOpen}
-        onSave={handleLocationSave}
       />
     </div>
   );
