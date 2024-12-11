@@ -3,15 +3,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 export default function Communications() {
   return (
-    <div className="min-h-screen p-6 space-y-6 bg-[#F1F1F1]">
+    <div className="min-h-screen p-6 space-y-6 bg-white">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-medium text-gray-700">Communications</h1>
-      </div>
-
-      <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded">
-        <p className="text-sm text-blue-700">
-          Create & publish a Stamp Card first to unlock this area with your real functionality. (Available to Pro & Elite plans only).
-        </p>
       </div>
 
       <div>
