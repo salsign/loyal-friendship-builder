@@ -6,6 +6,7 @@ import { StampCardPreview } from "@/components/stamp-card/StampCardPreview";
 import { Progress } from "@/components/ui/progress";
 import { useState } from "react";
 import { StampCardFormValues } from "@/types/stamp-card";
+import { RewardsStep } from "@/components/stamp-card/RewardsStep";
 
 const STEPS = ["Card Design", "Rewards", "Locations", "Review"];
 
@@ -39,6 +40,17 @@ const CreateStampCard = () => {
     // Here you would typically save the form state
     // For now, just redirect to home
     window.location.href = "/";
+  };
+
+  const renderStepContent = () => {
+    switch (currentStep) {
+      case 0:
+        return <StampCardForm onFormChange={setFormValues} />;
+      case 1:
+        return <RewardsStep />;
+      default:
+        return <div>Step {currentStep + 1} content coming soon...</div>;
+    }
   };
 
   return (
@@ -78,7 +90,7 @@ const CreateStampCard = () => {
 
         <div className="flex gap-8">
           <div className="flex-1 space-y-6">
-            <StampCardForm onFormChange={setFormValues} />
+            {renderStepContent()}
             <div className="flex justify-between pt-6">
               <Button
                 variant="outline"
