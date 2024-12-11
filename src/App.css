@@ -13,21 +13,3 @@ main {
   min-height: 100vh;
   overflow-y: auto;
 }
-
-/* Add explicit width control for the sidebar */
-[data-sidebar="sidebar"] {
-  width: var(--sidebar-width) !important;
-  max-width: var(--sidebar-width) !important;
-}
-
-@media (max-width: 768px) {
-  main {
-    margin-left: var(--sidebar-width-mobile);
-    width: calc(100% - var(--sidebar-width-mobile));
-  }
-
-  [data-sidebar="sidebar"] {
-    width: var(--sidebar-width-mobile) !important;
-    max-width: var(--sidebar-width-mobile) !important;
-  }
-}

@@ -50,7 +50,7 @@ const menuItems = [
 
 export function AppSidebar() {
   return (
-    <Sidebar variant="inset" className="bg-sidebar fixed w-[var(--sidebar-width)] md:w-[var(--sidebar-width)] max-w-[var(--sidebar-width)] md:max-w-[var(--sidebar-width)]">
+    <Sidebar variant="inset" className="bg-sidebar">
       <SidebarContent>
         {/* Logo/Business Name Section */}
         <div className="p-4 text-sidebar-foreground text-center">
@@ -68,9 +68,9 @@ export function AppSidebar() {
                     asChild
                     className="text-sidebar-foreground hover:bg-sidebar-accent data-[active=true]:bg-sidebar-accent"
                   >
-                    <Link to={item.path} className="flex items-center gap-2 px-2 py-1.5">
-                      <item.icon className="w-4 h-4" />
-                      <span className="text-xs whitespace-nowrap">{item.label}</span>
+                    <Link to={item.path}>
+                      <item.icon className="w-6 h-6" />
+                      <span>{item.label}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
