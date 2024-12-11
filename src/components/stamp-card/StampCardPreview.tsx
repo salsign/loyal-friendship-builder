@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
 import { Globe, RotateCw, User, Gift, Settings } from "lucide-react";
 import { StampCardFormValues } from "@/types/stamp-card";
@@ -10,6 +11,7 @@ interface StampCardPreviewProps {
 
 export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [showStamps, setShowStamps] = useState(true);
   
   // Ensure stamps are within the valid range (1-12)
   const numberOfStamps = Math.min(Math.max(1, formValues.stamps || 6), 12);
@@ -18,7 +20,11 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
     <Card className="p-6 sticky top-8">
       <div className="flex items-center gap-2 mb-4">
         <span className="text-sm text-gray-600">Preview card with stamps</span>
-        <div className="w-10 h-6 bg-[#F6F6F7] rounded-full" />
+        <Switch
+          checked={showStamps}
+          onCheckedChange={setShowStamps}
+          className="data-[state=checked]:bg-[#ea384c]"
+        />
       </div>
 
       <div className="flex justify-between items-center mb-4">
@@ -34,11 +40,13 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
                 YOUR LOGO HERE
               </div>
               <p className="text-center text-xs font-medium mb-6 w-full px-2 break-words whitespace-pre-wrap overflow-hidden">{formValues.cardDescription || "Card Description"}</p>
-              <div className="grid grid-cols-3 gap-3 w-full">
-                {[...Array(numberOfStamps)].map((_, i) => (
-                  <div key={i} className="aspect-square rounded-full border-2 border-gray-200" />
-                ))}
-              </div>
+              {showStamps && (
+                <div className="grid grid-cols-3 gap-3 w-full">
+                  {[...Array(numberOfStamps)].map((_, i) => (
+                    <div key={i} className="aspect-square rounded-full border-2 border-gray-200" />
+                  ))}
+                </div>
+              )}
               <div className="mt-auto mb-3 w-full pointer-events-none select-none">
                 <Button 
                   variant="destructive" 
