@@ -16,12 +16,13 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
 
   return (
     <Card className="p-6 sticky top-8">
+      <div className="flex items-center gap-2 mb-4">
+        <span className="text-sm text-gray-600">Preview card with stamps</span>
+        <div className="w-10 h-6 bg-[#F6F6F7] rounded-full" />
+      </div>
+
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold">{formValues.cardName || "Card Description"}</h2>
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-600">Preview card with stamps</span>
-          <div className="w-10 h-6 bg-[#F6F6F7] rounded-full" />
-        </div>
       </div>
 
       <div className="relative">
