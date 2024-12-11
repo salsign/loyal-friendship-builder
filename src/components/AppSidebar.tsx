@@ -1,86 +1,80 @@
+import { LayoutDashboard, CreditCard, Users, MessageSquare, Star, BookOpen, HelpCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   Sidebar,
+  SidebarGroup,
+  SidebarGroupContent,
   SidebarMenu,
-  SidebarMenuItem,
   SidebarMenuButton,
-} from "./ui/sidebar";
-import {
-  LayoutGrid,
-  Receipt,
-  Users,
-  Settings,
-  CreditCard,
-  Store,
-  Wallet,
-  Gift,
-} from "lucide-react";
+  SidebarMenuItem,
+} from "@/components/ui/sidebar";
 
 const menuItems = [
   {
-    icon: LayoutGrid,
+    icon: LayoutDashboard,
     label: "Dashboard",
     path: "/",
   },
   {
-    icon: Receipt,
-    label: "Transactions",
-    path: "/transactions",
+    icon: CreditCard,
+    label: "Stamp Cards",
+    path: "/stamp-cards",
   },
   {
     icon: Users,
-    label: "Customers",
-    path: "/customers",
+    label: "Members",
+    path: "/members",
   },
   {
-    icon: CreditCard,
-    label: "Cards",
-    path: "/cards",
+    icon: MessageSquare,
+    label: "Communications",
+    path: "/communications",
   },
   {
-    icon: Store,
-    label: "Locations",
-    path: "/locations",
+    icon: Star,
+    label: "Campaigns",
+    path: "/campaigns",
   },
   {
-    icon: Wallet,
-    label: "Payments",
-    path: "/payments",
+    icon: BookOpen,
+    label: "Resources",
+    path: "/resources",
   },
   {
-    icon: Gift,
-    label: "Rewards",
-    path: "/rewards",
-  },
-  {
-    icon: Settings,
-    label: "Settings",
-    path: "/settings",
+    icon: HelpCircle,
+    label: "Help & Support",
+    path: "/help",
   },
 ];
 
-export const AppSidebar = () => {
+export function AppSidebar() {
   return (
     <Sidebar variant="inset" className="bg-sidebar">
-      <div className="p-3 text-sidebar-foreground text-center">
-        <h2 className="text-lg font-bold">ZAINAB</h2>
+      {/* Logo/Business Name Section */}
+      <div className="p-4 text-sidebar-foreground text-center">
+        <h2 className="text-lg font-bold mb-1">ZAINAB</h2>
         <p className="text-xs">FOOD</p>
       </div>
 
-      <SidebarMenu>
-        {menuItems.map((item) => (
-          <SidebarMenuItem key={item.path}>
-            <SidebarMenuButton
-              className="text-sidebar-foreground hover:bg-sidebar-accent data-[active=true]:bg-sidebar-accent"
-            >
-              <Link to={item.path} className="flex items-center gap-2">
-                <item.icon className="w-5 h-5" />
-                <span className="text-sm">{item.label}</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        ))}
-      </SidebarMenu>
+      {/* Menu Items */}
+      <SidebarGroup>
+        <SidebarGroupContent>
+          <SidebarMenu>
+            {menuItems.map((item) => (
+              <SidebarMenuItem key={item.label}>
+                <SidebarMenuButton
+                  className="text-sidebar-foreground hover:bg-sidebar-accent data-[active=true]:bg-sidebar-accent"
+                >
+                  <Link to={item.path} className="flex items-center gap-2">
+                    <item.icon className="w-5 h-5" />
+                    <span className="text-sm">{item.label}</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            ))}
+          </SidebarMenu>
+        </SidebarGroupContent>
+      </SidebarGroup>
     </Sidebar>
   );
-};
+}
