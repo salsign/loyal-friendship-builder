@@ -9,8 +9,20 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { useState } from "react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export const RewardsStep = () => {
+  const [selectedType, setSelectedType] = useState<string | null>(null);
+  const [expiryEnabled, setExpiryEnabled] = useState(false);
+
+  const rewardTypes = [
+    { id: 'main', color: '#12B76A', bgColor: '#E7F9F1' },
+    { id: 'signup', color: '#F79009', bgColor: '#FFF9E5' },
+    { id: 'interim', color: '#444CE7', bgColor: '#EEF4FF' },
+  ];
+
   return (
     <div className="space-y-6">
       <div className="space-y-4">
@@ -33,7 +45,7 @@ export const RewardsStep = () => {
             Add reward
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-[525px]">
           <DialogHeader>
             <DialogTitle>Add a reward</DialogTitle>
           </DialogHeader>
@@ -41,36 +53,27 @@ export const RewardsStep = () => {
             <div className="space-y-4">
               <Label>Reward type*</Label>
               <div className="flex gap-4">
-                <div className="flex flex-col items-center gap-2 rounded-lg border border-red-500 p-4">
-                  <div className="h-12 w-12 bg-[#E7F9F1]">
-                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="48" height="48" rx="8" fill="#E7F9F1"/>
-                      <path d="M31 24.5C31 23.837 30.7366 23.2011 30.2678 22.7322C29.7989 22.2634 29.163 22 28.5 22H20.5C19.837 22 19.2011 22.2634 18.7322 22.7322C18.2634 23.2011 18 23.837 18 24.5V29.5C18 30.163 18.2634 30.7989 18.7322 31.2678C19.2011 31.7366 19.837 32 20.5 32H28.5C29.163 32 29.7989 31.7366 30.2678 31.2678C30.7366 30.7989 31 30.163 31 29.5V24.5Z" stroke="#12B76A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M27 22V19.5C27 18.837 26.7366 18.2011 26.2678 17.7322C25.7989 17.2634 25.163 17 24.5 17H20.5C19.837 17 19.2011 17.2634 18.7322 17.7322C18.2634 18.2011 18 18.837 18 19.5V22" stroke="#12B76A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                {rewardTypes.map((type) => (
+                  <div
+                    key={type.id}
+                    onClick={() => setSelectedType(type.id)}
+                    className={`flex flex-col items-center gap-2 rounded-lg border p-4 cursor-pointer transition-all ${
+                      selectedType === type.id
+                        ? `border-[${type.color}]`
+                        : selectedType
+                        ? 'opacity-50 border-gray-200'
+                        : 'border-gray-200 hover:border-gray-300'
+                    }`}
+                  >
+                    <div className={`h-12 w-12 flex items-center justify-center rounded-lg`} style={{ backgroundColor: type.bgColor }}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 15C12.7956 15 13.5587 14.6839 14.1213 14.1213C14.6839 13.5587 15 12.7956 15 12C15 11.2044 14.6839 10.4413 14.1213 9.87868C13.5587 9.31607 12.7956 9 12 9C11.2044 9 10.4413 9.31607 9.87868 9.87868C9.31607 10.4413 9 11.2044 9 12C9 12.7956 9.31607 13.5587 9.87868 14.1213C10.4413 14.6839 11.2044 15 12 15Z" stroke={type.color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M19.7778 12C19.7778 12.9137 19.6323 13.8196 19.35 14.6793C19.0677 15.5389 18.6531 16.3399 18.1252 17.0505C17.5973 17.7611 16.9633 18.3711 16.2445 18.8709C15.5256 19.3706 14.7335 19.7516 13.9 20M4.22223 12C4.22223 11.0863 4.36771 10.1804 4.65002 9.32074C4.93233 8.46108 5.34694 7.66013 5.87484 6.94954C6.40274 6.23894 7.03671 5.62891 7.75557 5.12914C8.47442 4.62936 9.26654 4.24842 10.1 4M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke={type.color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <span className="text-sm font-medium capitalize">{type.id}</span>
                   </div>
-                  <span className="text-sm font-medium">Main</span>
-                </div>
-                <div className="flex flex-col items-center gap-2 rounded-lg border p-4">
-                  <div className="h-12 w-12 bg-[#FFF9E5]">
-                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="48" height="48" rx="8" fill="#FFF9E5"/>
-                      <path d="M31 24.5C31 23.837 30.7366 23.2011 30.2678 22.7322C29.7989 22.2634 29.163 22 28.5 22H20.5C19.837 22 19.2011 22.2634 18.7322 22.7322C18.2634 23.2011 18 23.837 18 24.5V29.5C18 30.163 18.2634 30.7989 18.7322 31.2678C19.2011 31.7366 19.837 32 20.5 32H28.5C29.163 32 29.7989 31.7366 30.2678 31.2678C30.7366 30.7989 31 30.163 31 29.5V24.5Z" stroke="#F79009" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M27 22V19.5C27 18.837 26.7366 18.2011 26.2678 17.7322C25.7989 17.2634 25.163 17 24.5 17H20.5C19.837 17 19.2011 17.2634 18.7322 17.7322C18.2634 18.2011 18 18.837 18 19.5V22" stroke="#F79009" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                  <span className="text-sm font-medium">Sign Up</span>
-                </div>
-                <div className="flex flex-col items-center gap-2 rounded-lg border p-4">
-                  <div className="h-12 w-12 bg-[#EEF4FF]">
-                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="48" height="48" rx="8" fill="#EEF4FF"/>
-                      <path d="M31 24.5C31 23.837 30.7366 23.2011 30.2678 22.7322C29.7989 22.2634 29.163 22 28.5 22H20.5C19.837 22 19.2011 22.2634 18.7322 22.7322C18.2634 23.2011 18 23.837 18 24.5V29.5C18 30.163 18.2634 30.7989 18.7322 31.2678C19.2011 31.7366 19.837 32 20.5 32H28.5C29.163 32 29.7989 31.7366 30.2678 31.2678C30.7366 30.7989 31 30.163 31 29.5V24.5Z" stroke="#444CE7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M27 22V19.5C27 18.837 26.7366 18.2011 26.2678 17.7322C25.7989 17.2634 25.163 17 24.5 17H20.5C19.837 17 19.2011 17.2634 18.7322 17.7322C18.2634 18.2011 18 18.837 18 19.5V22" stroke="#444CE7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                  <span className="text-sm font-medium">Interim</span>
-                </div>
+                ))}
               </div>
             </div>
             <div className="space-y-2">
@@ -78,13 +81,34 @@ export const RewardsStep = () => {
               <Input placeholder="Free coffee" />
               <div className="text-sm text-gray-500">after 6 stamps</div>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-4">
               <Label>Settings</Label>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm">Expiry</span>
-                  <div className="h-6 w-11 rounded-full bg-gray-200"></div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm">Expires after</span>
+                    <Info className="h-4 w-4 text-gray-400" />
+                  </div>
+                  <Switch
+                    checked={expiryEnabled}
+                    onCheckedChange={setExpiryEnabled}
+                  />
                 </div>
+                {expiryEnabled && (
+                  <div className="flex gap-4">
+                    <Input type="number" placeholder="1" className="w-24" />
+                    <Select>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select..." />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="days">Days</SelectItem>
+                        <SelectItem value="weeks">Weeks</SelectItem>
+                        <SelectItem value="months">Months</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
               </div>
             </div>
             <Button className="w-full">Save reward</Button>
