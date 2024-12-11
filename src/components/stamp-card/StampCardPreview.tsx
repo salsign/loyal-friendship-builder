@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
-import { Globe, RotateCw, User, Gift, Settings, Circle, Coffee, Heart, UtensilsCrossed, Check } from "lucide-react";
+import { Globe, RotateCw, User, Gift, Settings, Circle, Coffee, Heart, UtensilsCrossed } from "lucide-react";
 import { StampCardFormValues } from "@/types/stamp-card";
 
 interface StampCardPreviewProps {
@@ -17,6 +17,8 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
   const numberOfStamps = Math.min(Math.max(1, formValues.stamps || 6), 12);
 
   const renderStampIcon = () => {
+    if (!showStamps) return null;
+    
     switch (formValues.selectedIcon) {
       case 'circle':
         return <Circle className="w-full h-full text-[#ea384c]" />;
@@ -63,15 +65,13 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
                 YOUR LOGO HERE
               </div>
               <p className="text-center text-xs font-medium mb-6 w-full px-2 break-words whitespace-pre-wrap overflow-hidden">{formValues.cardDescription || "Card Description"}</p>
-              {showStamps && (
-                <div className="grid grid-cols-3 gap-3 w-full">
-                  {[...Array(numberOfStamps)].map((_, i) => (
-                    <div key={i} className="aspect-square rounded-full border-2 border-gray-200 flex items-center justify-center p-1">
-                      {renderStampIcon()}
-                    </div>
-                  ))}
-                </div>
-              )}
+              <div className="grid grid-cols-3 gap-3 w-full">
+                {[...Array(numberOfStamps)].map((_, i) => (
+                  <div key={i} className="aspect-square rounded-full border-2 border-gray-200 flex items-center justify-center p-1">
+                    {renderStampIcon()}
+                  </div>
+                ))}
+              </div>
               <div className="mt-auto mb-3 w-full pointer-events-none select-none">
                 <Button 
                   variant="destructive" 
