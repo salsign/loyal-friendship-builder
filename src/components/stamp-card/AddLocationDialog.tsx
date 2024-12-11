@@ -8,14 +8,17 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Info, Upload } from "lucide-react";
+import { useState } from "react";
 
 interface AddLocationDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onLogoChange: (logo: string | null, emoji: string | null) => void;
 }
 
-export const AddLocationDialog = ({ open, onOpenChange }: AddLocationDialogProps) => {
-  console.log("Rendering AddLocationDialog component");
+export const AddLocationDialog = ({ open, onOpenChange, onLogoChange }: AddLocationDialogProps) => {
+  const [uploadedLogo, setUploadedLogo] = useState<string | null>(null);
+  const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
 
   const predefinedLogos = [
     { id: 'diamond', icon: '💎' },
@@ -27,6 +30,26 @@ export const AddLocationDialog = ({ open, onOpenChange }: AddLocationDialogProps
     { id: 'star', icon: '⭐' },
     { id: 'shop', icon: '🏪' },
   ];
+
+  const handleLogoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        setUploadedLogo(base64String);
+        setSelectedEmoji(null);
+        onLogoChange(base64String, null);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleEmojiSelect = (emoji: string) => {
+    setSelectedEmoji(emoji);
+    setUploadedLogo(null);
+    onLogoChange(null, emoji);
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -61,10 +84,18 @@ export const AddLocationDialog = ({ open, onOpenChange }: AddLocationDialogProps
               <Info className="h-4 w-4 text-gray-400" />
             </div>
             <div className="border-2 border-dashed rounded-md p-4">
-              <div className="flex flex-col items-center justify-center gap-2">
-                <Upload className="h-6 w-6 text-gray-400" />
-                <span className="text-sm text-blue-500">Upload</span>
-              </div>
+              <label className="cursor-pointer">
+                <div className="flex flex-col items-center justify-center gap-2">
+                  <Upload className="h-6 w-6 text-gray-400" />
+                  <span className="text-sm text-blue-500">Upload</span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={handleLogoUpload}
+                  />
+                </div>
+              </label>
             </div>
             <p className="text-xs text-gray-500">JPG/PNG/GIF images only</p>
           </div>
@@ -76,7 +107,8 @@ export const AddLocationDialog = ({ open, onOpenChange }: AddLocationDialogProps
                 <Button
                   key={logo.id}
                   variant="outline"
-                  className="h-12 text-xl"
+                  className={`h-12 text-xl ${selectedEmoji === logo.icon ? 'ring-2 ring-blue-500' : ''}`}
+                  onClick={() => handleEmojiSelect(logo.icon)}
                 >
                   {logo.icon}
                 </Button>

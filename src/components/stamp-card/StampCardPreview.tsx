@@ -13,7 +13,6 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [showStamps, setShowStamps] = useState(true);
   
-  // Ensure stamps are within the valid range (1-12)
   const numberOfStamps = Math.min(Math.max(1, formValues.stamps || 6), 12);
 
   const renderStampIcon = () => {
@@ -41,6 +40,32 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
     }
   };
 
+  const renderLogo = () => {
+    if (formValues.logo) {
+      return (
+        <img 
+          src={formValues.logo} 
+          alt="Business logo" 
+          className="w-full h-full object-contain"
+        />
+      );
+    }
+    
+    if (formValues.selectedEmoji) {
+      return (
+        <div className="text-4xl flex items-center justify-center h-full">
+          {formValues.selectedEmoji}
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex items-center justify-center text-[10px] text-gray-500">
+        YOUR LOGO HERE
+      </div>
+    );
+  };
+
   return (
     <Card className="p-6 sticky top-8">
       <div className="flex items-center gap-2 mb-4">
@@ -61,8 +86,8 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
           {/* Front of the card */}
           <div className={`absolute inset-0 backface-hidden transition-all duration-500 ${isFlipped ? "opacity-0" : "opacity-100"}`}>
             <div className="flex flex-col items-center pt-12 px-6 h-full">
-              <div className="w-20 h-20 bg-gray-200 rounded-lg mb-6 flex items-center justify-center text-[10px] text-gray-500">
-                YOUR LOGO HERE
+              <div className="w-20 h-20 bg-gray-200 rounded-lg mb-6 flex items-center justify-center">
+                {renderLogo()}
               </div>
               <p className="text-center text-xs font-medium mb-6 w-full px-2 break-words whitespace-pre-wrap overflow-hidden">{formValues.cardDescription || "Card Description"}</p>
               <div className="grid grid-cols-3 gap-3 w-full">
@@ -78,8 +103,8 @@ export const StampCardPreview = ({ formValues }: StampCardPreviewProps) => {
           {/* Back of the card */}
           <div className={`absolute inset-0 backface-hidden transition-all duration-500 rotate-y-180 ${isFlipped ? "opacity-100" : "opacity-0"}`}>
             <div className="flex flex-col items-center pt-12 px-6">
-              <div className="w-20 h-20 bg-gray-200 rounded-lg mb-6 flex items-center justify-center text-[10px] text-gray-500">
-                YOUR LOGO HERE
+              <div className="w-20 h-20 bg-gray-200 rounded-lg mb-6 flex items-center justify-center">
+                {renderLogo()}
               </div>
               <h3 className="text-lg font-medium mb-4">{formValues.businessName || "Business Name"}</h3>
               {formValues.websiteUrl && (
