@@ -10,7 +10,7 @@ function App() {
     <Router>
       <SidebarProvider>
         <AppSidebar />
-        <main className="flex-1">
+        <main className="flex-1 w-0">
           <Routes>
             <Route path="/stamp-cards" element={<Index />} />
             <Route path="/stamp-cards/create" element={<CreateStampCard />} />
