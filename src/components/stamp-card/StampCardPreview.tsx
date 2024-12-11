@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
-import { RotateCw, Store } from "lucide-react";
+import { RotateCw, Store, Circle, Coffee, UtensilsCrossed, Heart } from "lucide-react";
 import { StampCardFormValues } from "@/types/stamp-card";
 
 interface StampCardPreviewProps {
