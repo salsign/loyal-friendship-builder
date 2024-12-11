@@ -19,7 +19,7 @@ const members = [
 
 export default function Members() {
   return (
-    <div className="p-6 space-y-4 bg-white"> {/* Changed background color to white */}
+    <div className="min-h-screen p-6 space-y-4 bg-white">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-medium text-gray-700">Members</h1>
       </div>
