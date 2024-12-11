@@ -94,7 +94,7 @@ export const AdvancedSettings = ({
           <Switch 
             checked={isTimeDelayEnabled}
             onCheckedChange={setIsTimeDelayEnabled}
-            className="data-[state=checked]:bg-[#4ade80] data-[state=checked]:border-[#4ade80]" 
+            className="data-[state=checked]:bg-[#5BC236] data-[state=checked]:border-[#5BC236]" 
           />
         </div>
         <div className="flex items-center justify-between">
@@ -116,7 +116,7 @@ export const AdvancedSettings = ({
           <Switch 
             checked={isMultiStampingEnabled}
             onCheckedChange={setIsMultiStampingEnabled}
-            className="data-[state=checked]:bg-[#4ade80] data-[state=checked]:border-[#4ade80]" 
+            className="data-[state=checked]:bg-[#5BC236] data-[state=checked]:border-[#5BC236]" 
           />
         </div>
       </div>
