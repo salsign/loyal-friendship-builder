@@ -57,7 +57,7 @@ export function AppSidebar() {
           <img 
             src="/lovable-uploads/3542caa1-9989-474a-b70c-4962e4f3b450.png" 
             alt="Loyaze Logo" 
-            className="w-full h-auto max-w-[180px] mx-auto"
+            className="w-full h-auto max-w-[120px] mx-auto"
           />
         </div>
 
