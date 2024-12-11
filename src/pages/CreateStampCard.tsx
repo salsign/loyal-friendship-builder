@@ -54,7 +54,7 @@ const CreateStampCard = () => {
       case 0:
         return <StampCardForm onFormChange={setFormValues} />;
       case 1:
-        return <RewardsStep />;
+        return <RewardsStep formValues={formValues} />;
       default:
         return <div>Step {currentStep + 1} content coming soon...</div>;
     }

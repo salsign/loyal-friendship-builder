@@ -12,8 +12,13 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { StampCardFormValues } from "@/types/stamp-card";
 
-export const RewardsStep = () => {
+interface RewardsStepProps {
+  formValues: StampCardFormValues;
+}
+
+export const RewardsStep = ({ formValues }: RewardsStepProps) => {
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [expiryEnabled, setExpiryEnabled] = useState(false);
 
@@ -79,7 +84,7 @@ export const RewardsStep = () => {
             <div className="space-y-2">
               <Label>Reward name*</Label>
               <Input placeholder="Free coffee" />
-              <div className="text-sm text-gray-500">after 6 stamps</div>
+              <div className="text-sm text-gray-500">after {formValues.stamps} stamps</div>
             </div>
             <div className="space-y-4">
               <Label>Settings</Label>
