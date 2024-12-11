@@ -1,22 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Plus, Store } from "lucide-react";
+import { Plus } from "lucide-react";
 import { useState } from "react";
 import { AddLocationDialog } from "./AddLocationDialog";
-
-interface LocationLogo {
-  type: 'emoji' | 'upload';
-  content: string;
-}
 
 export const LocationsStep = () => {
   console.log("Rendering LocationsStep component");
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [selectedLogo, setSelectedLogo] = useState<LocationLogo | null>(null);
-  
-  const handleLogoSelect = (logo: LocationLogo) => {
-    console.log("Logo selected:", logo);
-    setSelectedLogo(logo);
-  };
   
   return (
     <div className="space-y-6">
@@ -34,22 +23,6 @@ export const LocationsStep = () => {
           Please provide details of the locations where this stamp card will be available. If this is not applicable, please enter a HQ address.
         </p>
 
-        <div className="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center">
-          {selectedLogo ? (
-            selectedLogo.type === 'emoji' ? (
-              <span className="text-3xl">{selectedLogo.content}</span>
-            ) : (
-              <img 
-                src={selectedLogo.content} 
-                alt="Business logo" 
-                className="w-12 h-12 object-contain"
-              />
-            )
-          ) : (
-            <Store className="w-12 h-12 text-gray-500" />
-          )}
-        </div>
-
         <Button 
           className="w-full justify-center gap-2 bg-[#FF5A5F] hover:bg-[#FF5A5F]/90 text-white"
           onClick={() => setDialogOpen(true)}
@@ -62,7 +35,6 @@ export const LocationsStep = () => {
       <AddLocationDialog 
         open={dialogOpen}
         onOpenChange={setDialogOpen}
-        onLogoSelect={handleLogoSelect}
       />
     </div>
   );
