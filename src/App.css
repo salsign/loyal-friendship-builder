@@ -8,8 +8,21 @@
 
 /* Ensure the sidebar is fixed and content scrolls */
 main {
-  margin-left: var(--sidebar-width);
-  width: calc(100% - var(--sidebar-width));
+  margin-left: var(--sidebar-width, 12rem);
+  width: calc(100% - var(--sidebar-width, 12rem));
   min-height: 100vh;
   overflow-y: auto;
+}
+
+/* Add explicit width control for the sidebar */
+[data-sidebar="sidebar"] {
+  max-width: var(--sidebar-width, 12rem) !important;
+  width: var(--sidebar-width, 12rem) !important;
+}
+
+@media (max-width: 768px) {
+  [data-sidebar="sidebar"] {
+    max-width: var(--sidebar-width-mobile, 10rem) !important;
+    width: var(--sidebar-width-mobile, 10rem) !important;
+  }
 }
