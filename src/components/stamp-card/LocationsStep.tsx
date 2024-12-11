@@ -7,6 +7,11 @@ export const LocationsStep = () => {
   console.log("Rendering LocationsStep component");
   const [dialogOpen, setDialogOpen] = useState(false);
   
+  const handleLogoChange = (logo: string | null, emoji: string | null) => {
+    console.log("Logo changed:", { logo, emoji });
+    // This will be used later to update the form state
+  };
+
   return (
     <div className="space-y-6">
       <div className="space-y-4">
@@ -35,6 +40,7 @@ export const LocationsStep = () => {
       <AddLocationDialog 
         open={dialogOpen}
         onOpenChange={setDialogOpen}
+        onLogoChange={handleLogoChange}
       />
     </div>
   );
