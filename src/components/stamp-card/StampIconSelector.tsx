@@ -67,7 +67,7 @@ export const StampIconSelector = ({ onSelectIcon, onCustomImageUpload }: StampIc
           <div className="grid grid-cols-4 gap-4">
             {/* Red Circle */}
             <div 
-              className={`p-4 border-2 ${selectedIcon === 'circle' ? 'border-[#9b87f5]' : 'border-gray-200'} rounded-lg relative cursor-pointer`}
+              className={`p-4 border-2 ${selectedIcon === 'circle' ? 'border-[#9b87f5]' : 'border-gray-200'} rounded-lg relative cursor-pointer flex items-center justify-center`}
               onClick={() => handleIconSelect('circle')}
             >
               <Circle className="w-12 h-12 text-[#ea384c]" />
@@ -80,7 +80,7 @@ export const StampIconSelector = ({ onSelectIcon, onCustomImageUpload }: StampIc
 
             {/* Coffee Bean/Cup */}
             <div 
-              className={`p-4 border-2 ${selectedIcon === 'coffee' ? 'border-[#9b87f5]' : 'border-gray-200'} rounded-lg relative cursor-pointer`}
+              className={`p-4 border-2 ${selectedIcon === 'coffee' ? 'border-[#9b87f5]' : 'border-gray-200'} rounded-lg relative cursor-pointer flex items-center justify-center`}
               onClick={() => handleIconSelect('coffee')}
             >
               <Coffee className="w-12 h-12 text-[#8B4513]" />
@@ -93,7 +93,7 @@ export const StampIconSelector = ({ onSelectIcon, onCustomImageUpload }: StampIc
 
             {/* Fork and Knife */}
             <div 
-              className={`p-4 border-2 ${selectedIcon === 'utensils' ? 'border-[#9b87f5]' : 'border-gray-200'} rounded-lg relative cursor-pointer`}
+              className={`p-4 border-2 ${selectedIcon === 'utensils' ? 'border-[#9b87f5]' : 'border-gray-200'} rounded-lg relative cursor-pointer flex items-center justify-center`}
               onClick={() => handleIconSelect('utensils')}
             >
               <UtensilsCrossed className="w-12 h-12 text-[#555555]" />
@@ -106,7 +106,7 @@ export const StampIconSelector = ({ onSelectIcon, onCustomImageUpload }: StampIc
 
             {/* Heart */}
             <div 
-              className={`p-4 border-2 ${selectedIcon === 'heart' ? 'border-[#9b87f5]' : 'border-gray-200'} rounded-lg relative cursor-pointer`}
+              className={`p-4 border-2 ${selectedIcon === 'heart' ? 'border-[#9b87f5]' : 'border-gray-200'} rounded-lg relative cursor-pointer flex items-center justify-center`}
               onClick={() => handleIconSelect('heart')}
             >
               <Heart className="w-12 h-12 text-[#ea384c] fill-current" />
