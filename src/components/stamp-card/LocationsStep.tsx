@@ -6,6 +6,12 @@ import { AddLocationDialog } from "./AddLocationDialog";
 export const LocationsStep = () => {
   console.log("Rendering LocationsStep component");
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedLogo, setSelectedLogo] = useState<{ type: string; value: string } | null>(null);
+  
+  const handleLogoSelect = (logo: { type: string; value: string }) => {
+    console.log("Logo selected:", logo);
+    setSelectedLogo(logo);
+  };
   
   return (
     <div className="space-y-6">
@@ -35,6 +41,7 @@ export const LocationsStep = () => {
       <AddLocationDialog 
         open={dialogOpen}
         onOpenChange={setDialogOpen}
+        onLogoSelect={handleLogoSelect}
       />
     </div>
   );
